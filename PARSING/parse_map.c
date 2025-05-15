@@ -83,15 +83,16 @@ char	**parse_map(t_data *data, char *file_name)
 	int 	file;
 
 	file = open(file_name, O_RDONLY);
-	if (!file)
+	if (file == -1)
 		return (perror("open"), clean_exit(data, ""), NULL);
 	
 	ft_bzero(line, MAX_MAP_SIZE + 1);
 	readed_chars = read(file, line, MAX_MAP_SIZE);
 	if (readed_chars == -1)
-		return (close(file), perror("read"), clean_exit(data, ""), NULL);
-	if (read(file, line, MAX_MAP_SIZE) != 0)
-		return (close(file), ft_split(line, '\n'));
-	else
+		return (close(file), perror("read"), clean_exit(data, ""), NULL); //maybe change clean exit a little bit
+	if (read(file, line, 1) > 0)
 		return (close(file), clean_exit(data, "Map is too huge!"));
+	else
+		return (close(file), ft_split(line, '\n'));
+	return (NULL);
 }

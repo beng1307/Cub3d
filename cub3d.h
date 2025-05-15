@@ -29,21 +29,46 @@
 //Structs
 typedef struct	s_data
 {
-	void				*mlx;
-	void				*win;
-	int					file;
-	char				**map;
+	void		*mlx;
+	void		*win;
+	int			file;
+	char		**map;
 
-	int					gnl_error;
+
+	t_assets	assets;
+
+	int			gnl_error;
 
 	// t_player_position	player_position;
 
 }				t_data;
 
+typedef struct	s_assets
+{
+	char		*north_texture;
+	bool		no_texture_found;
+
+	char		*east_texture;
+	bool		ea_texture_found;
+	
+	char		*south_texture;
+	bool		so_texture_found;
+
+	char		*west_texture;
+	bool		we_texture_found;
+
+	char		*floor_color;
+	bool		floor_color_found;
+
+	char		*ceiling_color;
+	bool		ceiling_color_found;
+	
+}				t_assets;
+
 // typedef struct	s_player_position
 // {
-// 	float	x;
-// 	float	y;
+// 	double	x;
+// 	double	y;
 // }				t_player_position;
 
 

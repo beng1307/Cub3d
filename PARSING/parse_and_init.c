@@ -6,5 +6,5 @@ void	parse_and_init(t_data *data, char *file_name)
 	data->map = parse_map(data, file_name);
 	if (!data->map)
 		return (clean_exit(data, "Map parsing failed!"));
-	check_map(data);
+	check_map_and_textures(data);
 }
