@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <X11/keysym.h>
+// #include <X11/keysym.h>
 #include <stdbool.h>
 #include <fcntl.h>
 #include "mlx/mlx.h"
@@ -22,26 +22,34 @@
 
 # define ESCAPE 65307
 
+# define MAX_MAP_HEIGHT 32
+# define MAX_MAP_WIDTH 32
+# define MAX_MAP_SIZE (MAX_MAP_HEIGHT * MAX_MAP_WIDTH)
 
 //Structs
 typedef struct	s_data
 {
 	void				*mlx;
 	void				*win;
-	void				*file;
+	int					file;
 	char				**map;
 
 	int					gnl_error;
 
-	t_player_position	player_position;
+	// t_player_position	player_position;
 
 }				t_data;
 
-typedef struct	s_player_position
-{
-	float	x;
-	float	y;
-}				t_player_position;
+// typedef struct	s_player_position
+// {
+// 	float	x;
+// 	float	y;
+// }				t_player_position;
 
+
+//PARSING
+void	parse_and_init(t_data *data, char *file_name);
+char	**parse_map(t_data *data, char *file_name);
+void	check_map(t_data *data);
 
 #endif
