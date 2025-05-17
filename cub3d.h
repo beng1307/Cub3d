@@ -32,8 +32,8 @@ typedef struct	s_data
 	void		*mlx;
 	void		*win;
 	int			file;
+	char		**file_content;
 	char		**map;
-
 
 	t_assets	assets;
 

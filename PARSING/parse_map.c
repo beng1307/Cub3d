@@ -1,5 +1,45 @@
 #include "../cub3d.h"
 
+void	check_if_map_has_gaps(t_data *data, char *line)
+{
+	int	index;
+
+	index= 0;
+	while (line[index] && line[index + 1])
+		index++;
+	while (index >= 0 && (is_map_content(line[index]) || line[index] == '\n'));
+	{
+		if (line[index] == '\n' && line[index - 1] == '\n')
+			clean_exit(data, "There are gaps in the map!");
+		index--;
+	}
+}
+
+char	**parse_map(t_data *data, char *file_name)
+{
+	char	**map;
+	char	line[MAX_MAP_SIZE + 1];
+	int		readed_chars;
+	int 	file;
+
+	file = open(file_name, O_RDONLY);
+	if (file == -1)
+		return (perror("open"), clean_exit(data, ""), NULL);
+	
+	ft_bzero(line, MAX_MAP_SIZE + 1);
+	readed_chars = read(file, line, MAX_MAP_SIZE);
+	if (readed_chars == -1)
+		return (close(file), clean_exit(data, "Read function failed!"), NULL);
+	if (read(file, line, 1) > 0)
+		return (close(file), clean_exit(data, "Map is too huge!"));
+	else
+	{
+		check_if_map_has_gaps();
+		return (close(file), ft_split(line, '\n'));
+	}
+	return (NULL);
+}
+
 // static void	remove_newline(char **map)
 // {
 // 	int	line;
@@ -74,25 +114,6 @@
 // 	return (map);
 // }
 
-//Change error message
-char	**parse_map(t_data *data, char *file_name)
-{
-	char	**map;
-	char	line[MAX_MAP_SIZE + 1];
-	int		readed_chars;
-	int 	file;
 
-	file = open(file_name, O_RDONLY);
-	if (file == -1)
-		return (perror("open"), clean_exit(data, ""), NULL);
-	
-	ft_bzero(line, MAX_MAP_SIZE + 1);
-	readed_chars = read(file, line, MAX_MAP_SIZE);
-	if (readed_chars == -1)
-		return (close(file), perror("read"), clean_exit(data, ""), NULL); //maybe change clean exit a little bit
-	if (read(file, line, 1) > 0)
-		return (close(file), clean_exit(data, "Map is too huge!"));
-	else
-		return (close(file), ft_split(line, '\n'));
-	return (NULL);
-}
+
+
