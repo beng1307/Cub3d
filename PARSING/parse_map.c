@@ -34,7 +34,7 @@ char	**parse_map(t_data *data, char *file_name)
 		return (close(file), clean_exit(data, "Map is too huge!"));
 	else
 	{
-		check_if_map_has_gaps();
+		check_if_map_has_gaps(data, line);
 		return (close(file), ft_split(line, '\n'));
 	}
 	return (NULL);
