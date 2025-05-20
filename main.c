@@ -2,10 +2,9 @@
 
 bool	check_filename(char *filename)
 {
-	if (!ft_strnstr(filename, ".ber", ft_strlen(filename)))
+	if (!ft_cmp(ft_strnstr(filename, ".cub", ft_strlen(filename)), ".cub"))
 		return (false);
-	if ((*filename == '.' && *(filename + 1) == 'b')
-		|| (*filename == '.' && *(filename + 2) == '.'))
+	if (!ft_cmp(filename, ".cub"))
 		return (false);
 	return (true);
 }
@@ -14,12 +13,12 @@ int	main(int ac, char **av)
 {
 	t_data	data;
 
-	if (ac != 2)
+	if (ac != 2 || !av[1])
 		return (1);
 	check_filename(av[1]);
 	parse_and_init(&data, av[1]);
 
-	mlx_loop(data.mlx);
+	mlx_loop(data.mlx.mlx_pointer);
 
 	return (0);
 }

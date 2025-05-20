@@ -125,42 +125,42 @@ void    check_textures_and_colors(t_data *data)
         {
             if (data->assets.no_texture_found)
                 clean_exit(data, "More then 1 NO Texture Paths!");
-            data->assets.north_texture = get_asset_path(data, index);
+            data->assets.north_texture_file = get_asset_path(data, index);
             data->assets.no_texture_found = true;
         }
         else if (ft_strncmp(data->file_content[index], "EA ", 3) == 0)
         {
             if (data->assets.ea_texture_found)
                 clean_exit(data, "More then 1 EA Texture Paths!");
-            data->assets.east_texture = get_asset_path(data, index);
+            data->assets.east_texture_file = get_asset_path(data, index);
             data->assets.ea_texture_found = true;
         }
         else if (ft_strncmp(data->file_content[index], "SO ", 3) == 0)
         {
             if (data->assets.so_texture_found)
                 clean_exit(data, "More then 1 SO Texture Paths!");
-            data->assets.south_texture = get_asset_path(data, index);
+            data->assets.south_texture_file = get_asset_path(data, index);
             data->assets.so_texture_found = true;
         }
         else if (ft_strncmp(data->file_content[index], "WE ", 3) == 0)
         {
             if (data->assets.we_texture_found)
                 clean_exit(data, "More then 1 WE Texture Paths!");
-            data->assets.west_texture = get_asset_path(data, index);
+            data->assets.west_texture_file = get_asset_path(data, index);
             data->assets.we_texture_found = true;
         }
         else if (ft_strncmp(data->file_content[index], "F ", 2) == 0)
         {
             if (data->assets.floor_color_found)
                 clean_exit(data, "More then 1 F color!");
-            data->assets.floor_color = get_asset_path(data, index);
+            data->assets.floor_color_rgb = get_asset_path(data, index);
             data->assets.floor_color_found = true;
         }
         else if (ft_strncmp(data->file_content[index], "C ", 2) == 0)
         {
             if (data->assets.ceiling_color_found)
                 clean_exit(data, "More then 1 C color!");
-            data->assets.ceiling_color = get_asset_path(data, index);
+            data->assets.ceiling_color_rgb = get_asset_path(data, index);
             data->assets.ceiling_color_found = true;
         }
         else

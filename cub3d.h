@@ -26,15 +26,17 @@
 # define MAX_MAP_WIDTH 32
 # define MAX_MAP_SIZE (MAX_MAP_HEIGHT * MAX_MAP_WIDTH)
 
+# define WIN_HEIGHT 720
+# define WIN_WIDTH 1080
+
 //Structs
 typedef struct	s_data
 {
-	void		*mlx;
-	void		*win;
 	int			file;
 	char		**file_content;
 	char		**map;
 
+	t_mlx		mlx;
 	t_assets	assets;
 
 	int			gnl_error;
@@ -43,26 +45,35 @@ typedef struct	s_data
 
 }				t_data;
 
+typedef struct	s_mlx
+{
+	void	*mlx_pointer;
+	void	*mlx_window;
+	void	*mlx_image;
+
+}				t_mlx;
+
 typedef struct	s_assets
 {
-	char		*north_texture;
+	char		*north_texture_file;
 	bool		no_texture_found;
 
-	char		*east_texture;
+	char		*east_texture_file;
 	bool		ea_texture_found;
 	
-	char		*south_texture;
+	char		*south_texture_file;
 	bool		so_texture_found;
 
-	char		*west_texture;
+	char		*west_texture_file;
 	bool		we_texture_found;
 
-	char		*floor_color;
+	char		*floor_color_rgb;
 	bool		floor_color_found;
-
-	char		*ceiling_color;
-	bool		ceiling_color_found;
+	int			floor_rgb[3];
 	
+	char		*ceiling_color_rgb;
+	bool		ceiling_color_found;
+	int			ceiling_rgb[3];
 }				t_assets;
 
 // typedef struct	s_player_position
@@ -75,6 +86,7 @@ typedef struct	s_assets
 //PARSING
 void	parse_and_init(t_data *data, char *file_name);
 char	**parse_map(t_data *data, char *file_name);
-void	check_map(t_data *data);
+void    check_map_and_textures(t_data *data);
+
 
 #endif
