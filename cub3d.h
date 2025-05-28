@@ -29,6 +29,8 @@
 # define WIN_HEIGHT 720
 # define WIN_WIDTH 1080
 
+#define	TEXTURE_SIZE 64
+
 //Structs
 typedef struct	s_data
 {
@@ -38,10 +40,10 @@ typedef struct	s_data
 
 	t_mlx		mlx;
 	t_assets	assets;
+	// t_player	player;
 
 	int			gnl_error;
 
-	// t_player_position	player_position;
 
 }				t_data;
 
@@ -57,15 +59,19 @@ typedef struct	s_assets
 {
 	char		*north_texture_file;
 	bool		no_texture_found;
+	void		*north_texture;
 
 	char		*east_texture_file;
 	bool		ea_texture_found;
-	
+	void		*east_texture;
+
 	char		*south_texture_file;
 	bool		so_texture_found;
+	void		*south_texture;
 
 	char		*west_texture_file;
 	bool		we_texture_found;
+	void		*west_texture;
 
 	char		*floor_color_rgb;
 	bool		floor_color_found;

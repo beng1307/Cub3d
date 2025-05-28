@@ -58,9 +58,11 @@ void    init_ceiling_and_floor_colors(t_data *data)
     init_and_check_rgb(data, data->assets.ceiling_rgb, data->assets.ceiling_color_rgb);
 }
 
-
 void    init_mlx_and_assets(t_data *data)
 {
+    int width;
+    int height;
+
     init_ceiling_and_floor_colors(data);
     data->mlx.mlx_pointer = mlx_init();
     if (!data->mlx.mlx_pointer)
@@ -71,4 +73,16 @@ void    init_mlx_and_assets(t_data *data)
     data->mlx.mlx_window = mlx_new_window(data->mlx.mlx_pointer, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
     if (!data->mlx.mlx_window)
         clean_exit(data, "Mlx window initialization failed!");
+    data->assets.north_texture = mlx_xpm_file_to_image(data->mlx.mlx_pointer, data->assets.north_texture_file, width, height);
+    if (!data->assets.north_texture || width != TEXTURE_SIZE || height != TEXTURE_SIZE)
+        clean_exit(data, "Mlx texture initialzation failed or wrong asset size!");
+    data->assets.east_texture = mlx_xpm_file_to_image(data->mlx.mlx_pointer, data->assets.east_texture_file, width, height);
+    if (!data->assets.east_texture || width != TEXTURE_SIZE || height != TEXTURE_SIZE)
+         clean_exit(data, "Mlx texture initialzation failed or wrong asset size!");
+    data->assets.south_texture = mlx_xpm_file_to_image(data->mlx.mlx_pointer, data->assets.south_texture_file, width, height);
+    if (!data->assets.south_texture || width != TEXTURE_SIZE || height != TEXTURE_SIZE)
+        clean_exit(data, "Mlx texture initialzation failed or wrong asset size!");
+    data->assets.west_texture = mlx_xpm_file_to_image(data->mlx.mlx_pointer, data->assets.east_texture_file, width, height);
+    if (!data->assets.west_texture || width != TEXTURE_SIZE || height != TEXTURE_SIZE)
+        clean_exit(data, "Mlx texture initialzation failed or wrong asset size!");
 }
