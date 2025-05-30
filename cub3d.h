@@ -32,6 +32,50 @@
 #define	TEXTURE_SIZE 64
 
 //Structs
+typedef struct	s_mlx
+{
+	void	*mlx_pointer;
+	void	*mlx_window;
+	void	*mlx_image;
+
+}				t_mlx;
+
+
+typedef struct	s_assets
+{
+	char		*north_texture_file;
+	bool		no_texture_found;
+	void		*north_texture;
+	
+	char		*east_texture_file;
+	bool		ea_texture_found;
+	void		*east_texture;
+	
+	char		*south_texture_file;
+	bool		so_texture_found;
+	void		*south_texture;
+	
+	char		*west_texture_file;
+	bool		we_texture_found;
+	void		*west_texture;
+	
+	char		*floor_color_rgb;
+	bool		floor_color_found;
+	int			floor_rgb[3];
+	
+	char		*ceiling_color_rgb;
+	bool		ceiling_color_found;
+	int			ceiling_rgb[3];
+}				t_assets;
+
+typedef struct	s_player
+{
+		double	x;
+		double	y;
+
+		
+}				t_player;
+
 typedef struct	s_data
 {
 	int			file;
@@ -47,52 +91,22 @@ typedef struct	s_data
 
 }				t_data;
 
-typedef struct	s_mlx
-{
-	void	*mlx_pointer;
-	void	*mlx_window;
-	void	*mlx_image;
-
-}				t_mlx;
-
-typedef struct	s_assets
-{
-	char		*north_texture_file;
-	bool		no_texture_found;
-	void		*north_texture;
-
-	char		*east_texture_file;
-	bool		ea_texture_found;
-	void		*east_texture;
-
-	char		*south_texture_file;
-	bool		so_texture_found;
-	void		*south_texture;
-
-	char		*west_texture_file;
-	bool		we_texture_found;
-	void		*west_texture;
-
-	char		*floor_color_rgb;
-	bool		floor_color_found;
-	int			floor_rgb[3];
 	
-	char		*ceiling_color_rgb;
-	bool		ceiling_color_found;
-	int			ceiling_rgb[3];
-}				t_assets;
-
-// typedef struct	s_player_position
-// {
-// 	double	x;
-// 	double	y;
-// }				t_player_position;
-
-
+	
 //PARSING
 void	parse_and_init(t_data *data, char *file_name);
-char	**parse_map(t_data *data, char *file_name);
+char	**parse_file_content(t_data *data, char *file_name);
 void    check_map_and_textures(t_data *data);
+void    init_mlx_and_assets(t_data *data);
+
+//CHECKS
+bool    is_map_content(char c);
+
+
+//ERROR_HANDLING
+void	clean_exit(t_data *data, char *error_message);
+
+
 
 
 #endif

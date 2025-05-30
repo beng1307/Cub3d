@@ -7,7 +7,7 @@ void	check_if_map_has_gaps(t_data *data, char *line)
 	index= 0;
 	while (line[index] && line[index + 1])
 		index++;
-	while (index >= 0 && (is_map_content(line[index]) || line[index] == '\n'));
+	while (index >= 0 && (is_map_content(line[index]) || line[index] == '\n'))
 	{
 		if (line[index] == '\n' && line[index - 1] == '\n')
 			clean_exit(data, "There are gaps in the map!");
@@ -15,9 +15,8 @@ void	check_if_map_has_gaps(t_data *data, char *line)
 	}
 }
 
-char	**parse_map(t_data *data, char *file_name)
+char	**parse_file_content(t_data *data, char *file_name)
 {
-	char	**map;
 	char	line[MAX_MAP_SIZE + 1];
 	int		readed_chars;
 	int 	file;
@@ -31,7 +30,7 @@ char	**parse_map(t_data *data, char *file_name)
 	if (readed_chars == -1)
 		return (close(file), clean_exit(data, "Read function failed!"), NULL);
 	if (read(file, line, 1) > 0)
-		return (close(file), clean_exit(data, "Map is too huge!"));
+		return (close(file), clean_exit(data, "Map is too huge!"), NULL);
 	else
 	{
 		check_if_map_has_gaps(data, line);

@@ -87,8 +87,8 @@ void	check_walls(t_data *data)
 
 void    check_map(t_data *data)
 {
-    check_content(data); //TODO
-    check_walls(data);//TODO
+    check_content(data);
+    check_walls(data);
 }
 
 char    *get_asset_path(t_data *data, int index)
