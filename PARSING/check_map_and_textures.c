@@ -72,7 +72,7 @@ void	check_walls(t_data *data)
         index2 = 0;
         while (data->map[index][index2])
         {
-            if (index == 0 || index2 == 0)
+            if (index == 0 || index2 == 0 || !data->map[index + 1])
             {
                 if (is_inside_walls_content(data->map[index][index2]))
                     clean_exit(data, "Map is not closed by walls!");

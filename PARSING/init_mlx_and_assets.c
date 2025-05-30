@@ -7,7 +7,7 @@ void    check_rgb_string(t_data *data, char *rgb_string)
     index = 0;
     while (rgb_string[index])
     {
-        if (!(ft_isdigit(rgb_string[index]) || rgb_string[index] == ','))
+        if (!(ft_isdigit(rgb_string[index]) || rgb_string[index] == ',' || rgb_string[index] == ' ' || rgb_string[index] == '\t'))
             clean_exit(data, "Ceiling or Floor rgb is not correct!");
         index++;
     }
