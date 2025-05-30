@@ -33,7 +33,10 @@ void    check_content(t_data *data)
             if (is_cardinal(data->map[index][index2]))
             {
                 if (!cardinal_found)
+                {
                     cardinal_found = true;
+                    init_player_position(data, index, index2);
+                }
                 else
                     clean_exit(data, "More than 1 starting position");
             }

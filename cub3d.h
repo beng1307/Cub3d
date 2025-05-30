@@ -72,6 +72,8 @@ typedef struct	s_player
 {
 		double	x;
 		double	y;
+		double	dir_x;
+		double	dir_y;
 
 		
 }				t_player;
@@ -84,7 +86,7 @@ typedef struct	s_data
 
 	t_mlx		mlx;
 	t_assets	assets;
-	// t_player	player;
+	t_player	player;
 
 	int			gnl_error;
 
@@ -98,6 +100,7 @@ void	parse_and_init(t_data *data, char *file_name);
 char	**parse_file_content(t_data *data, char *file_name);
 void    check_map_and_textures(t_data *data);
 void    init_mlx_and_assets(t_data *data);
+void	init_player_position(t_data *data, int y, int x);
 
 //CHECKS
 bool    is_map_content(char c);
