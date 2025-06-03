@@ -8,7 +8,7 @@
 // #include <X11/keysym.h>
 #include <stdbool.h>
 #include <fcntl.h>
-#include "mlx/mlx.h"
+#include <mlx.h>
 #include "libft/libft.h"
 
 
@@ -109,7 +109,7 @@ bool    is_map_content(char c);
 //ERROR_HANDLING
 void	clean_exit(t_data *data, char *error_message);
 
-
-
+//PLAYER_MOVEMENT
+void	overwrite_map(t_data *data);
 
 #endif

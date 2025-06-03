@@ -12,6 +12,8 @@ CUB3D_SRCS = main.c \
 	PARSING/init_mlx_and_assets.c \
 	PARSING/parse_and_init.c \
 	PARSING/parse_map.c \
+	PARSING/init_player_position.c \
+	PLAYER_MOVEMENT/tmp_overwrite.c \
 	ERROR_HANDLING/clean_exit.c
 
 OBJDIR = obj
