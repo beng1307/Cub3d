@@ -15,13 +15,25 @@
 void	init_player_position(t_data *data, int y, int x)
 {
 	if (data->map[y][x] == 'N')
+	{
 		data->player.dir_y = -1;
+		data->player.plane_y = -0.66;
+	}
 	else if (data->map[y][x] == 'S')
+	{
 		data->player.dir_y = 1;
+		data->player.plane_y = 0.66;
+	}
 	else if (data->map[y][x] == 'E')
+	{
 		data->player.dir_x = 1;
+		data->player.plane_x = 0.66;
+	}
 	else
+	{
 		data->player.dir_x = -1;
+		data->player.plane_x = -0.66;
+	}
 	data->player.x = x;
 	data->player.y = y;
 }
