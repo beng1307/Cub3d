@@ -70,17 +70,41 @@ typedef struct	s_assets
 
 typedef struct	s_player
 {
-		double	x;
-		double	y;
-		
-		double	dir_x;
-		double	dir_y;
-		
-		double	plane_x;
-		double	plane_y;
+	double	x;
+	double	y;
+	
+	double	dir_x;
+	double	dir_y;
+	
+	double	plane_x;
+	double	plane_y;
 
 		
 }				t_player;
+
+typedef struct	s_dda
+{
+	bool	hit;
+	int		side;
+
+	int		map_x;
+	int		map_y;
+
+	int		step_x;
+	int		step_y;
+
+	double	window_x;	
+	double	camera;
+
+	double	ray_direction_x;
+	double	ray_direction_y;
+
+	double	delta_distance_x;
+	double	delta_distance_y;
+
+	double	side_distance_x;
+	double	side_distance_y;
+}				t_dda;
 
 typedef struct	s_data
 {
@@ -91,10 +115,9 @@ typedef struct	s_data
 	t_mlx		mlx;
 	t_assets	assets;
 	t_player	player;
+	t_dda		dda;
 
 	int			gnl_error;
-
-
 }				t_data;
 
 	
