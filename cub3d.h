@@ -13,23 +13,26 @@
 
 
 //put keynumbers
-# define TURN_LEFT 
-# define TURN_RIGHT
-# define MOVE_FORWARD
-# define MOVE_BACKWARD
-# define MOVE_LEFT
-# define MOVE_RIGHT
+# define	TURN_LEFT 
+# define	TURN_RIGHT
+# define	MOVE_FORWARD 65362
+# define	MOVE_BACKWARD 65361
+# define	MOVE_LEFT 65363
+# define	MOVE_RIGHT 65364
 
-# define ESCAPE 65307
+# define	ESCAPE 65307
 
-# define MAX_MAP_HEIGHT 32
-# define MAX_MAP_WIDTH 32
-# define MAX_MAP_SIZE (MAX_MAP_HEIGHT * MAX_MAP_WIDTH)
+# define	MAX_MAP_HEIGHT 32
+# define	MAX_MAP_WIDTH 32
+# define	MAX_MAP_SIZE (MAX_MAP_HEIGHT * MAX_MAP_WIDTH)
 
-# define WIN_HEIGHT 720
-# define WIN_WIDTH 1080
+# define	WIN_HEIGHT 720
+# define	WIN_WIDTH 1080
 
-#define	TEXTURE_SIZE 64
+# define	TEXTURE_SIZE 64
+
+//dev
+# define RED 0xFF0000
 
 //Structs
 typedef struct	s_mlx
@@ -110,6 +113,13 @@ bool    is_map_content(char c);
 void	clean_exit(t_data *data, char *error_message);
 
 //PLAYER_MOVEMENT
-void	overwrite_map(t_data *data);
+void	tmp_overwrite(t_data *data);
+void	movement_init(t_data *data);
+int		hook_idle(t_data *data);
+int		hook_key(t_data *data);
+void	move_forward(t_data *data);
+void	move_backward(t_data *data);
+void	move_left(t_data *data);
+void	move_right(t_data *data);
 
 #endif

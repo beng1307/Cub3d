@@ -14,6 +14,9 @@ CUB3D_SRCS = main.c \
 	PARSING/parse_map.c \
 	PARSING/init_player_position.c \
 	PLAYER_MOVEMENT/tmp_overwrite.c \
+	PLAYER_MOVEMENT/movement_init.c \
+	PLAYER_MOVEMENT/hook_events.c \
+	PLAYER_MOVEMENT/movement.c \
 	ERROR_HANDLING/clean_exit.c
 
 OBJDIR = obj
@@ -29,9 +32,13 @@ $(LIBFT):
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 	mkdir -p $(OBJDIR)/PARSING
+	mkdir -p $(OBJDIR)/PLAYER_MOVEMENT
 	mkdir -p $(OBJDIR)/ERROR_HANDLING
 
 $(OBJDIR)/%.o: %.c | $(OBJDIR)
+	$(COMPILE) $(LIBFT_H) -c $< -o $@
+
+$(OBJDIR)/PLAYER_MOVEMENT/%.o: PLAYER_MOVEMENT/%.c | $(OBJDIR)
 	$(COMPILE) $(LIBFT_H) -c $< -o $@
 
 $(OBJDIR)/PARSING/%.o: PARSING/%.c | $(OBJDIR)

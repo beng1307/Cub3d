@@ -19,7 +19,8 @@ int	main(int ac, char **av)
 	check_filename(av[1]);
 	ft_memset(&data, 0, sizeof(data));
 	parse_and_init(&data, av[1]);
-	overwrite_map(&data); //dev
+	tmp_overwrite(&data); //dev
+	movement_init(&data);
 	mlx_loop(data.mlx.mlx_pointer);
 
 	return (0);
