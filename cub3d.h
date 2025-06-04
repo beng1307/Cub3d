@@ -84,17 +84,16 @@ typedef struct	s_player
 
 typedef struct	s_dda
 {
-	bool	hit;
 	int		side;
+
+	double	camera;
+	double	distance_to_wall;	
 
 	int		map_x;
 	int		map_y;
 
 	int		step_x;
 	int		step_y;
-
-	double	window_x;	
-	double	camera;
 
 	double	ray_direction_x;
 	double	ray_direction_y;

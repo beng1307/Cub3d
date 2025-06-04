@@ -1,79 +1,81 @@
 #include "../cub3d.h"
 
-double	dda_algorithm(t_data *data)
+void    calculate_dda_variables(t_data *data, double window_x)
 {
-	bool	hit;
-	int		map_x;
-	int		map_y;
-	int		step_x;
-	int		step_y;
-	int		side;
-	double	window_x;
-	double	camera;
-	double	ray_direction_x;
-	double	ray_direction_y;
-	double	delta_distance_x;
-	double	delta_distance_y;
-	double	side_distance_x;
-	double	side_distance_y;
-	double	distance_to_wall;
+    double  camera;
 
-	window_x = 0;
-	hit = false;
-	map_x = (int)data->player.x;
-	map_y = (int)data->player.y;
-	camera = 2 * window_x / (double)WIN_WIDTH - 1;
-	ray_direction_x = data->player.dir_x + data->player.plane_x * camera;
-	ray_direction_y = data->player.dir_y + data->player.plane_y * camera;
-	delta_distance_x = fabs(1 / ray_direction_x);
-	delta_distance_y = fabs(1 / ray_direction_y);
+    camera = 2 * window_x / (double)WIN_WIDTH - 1;
+    data->dda.map_x = (int)data->player.x;
+    data->dda.map_y = (int)data->player.y;
+    data->dda.ray_direction_x = data->player.dir_x + data->player.plane_x * camera;
+    data->dda.ray_direction_y = data->player.dir_y + data->player.plane_y * camera;
+    data->dda.delta_distance_x = fabs(1 / data->dda.ray_direction_x);
+    data->dda.delta_distance_y = fabs(1 / data->dda.ray_direction_y);
+}
 
-	if (ray_direction_x < 0)
+void    calculate_step_and_side_distance(t_data *data)
+{
+    if (data->dda.ray_direction_x < 0)
 	{
-		step_x = -1;
-		side_distance_x = (data->player.x - map_x) * delta_distance_x;
+		data->dda.step_x = -1;
+		data->dda.side_distance_x =
+            (data->player.x - data->dda.map_x) * data->dda.delta_distance_x;
 	}
 	else
 	{
-		step_x = 1;
-		side_distance_x = (map_x + 1.0 - data->player.x) * delta_distance_x;
+		data->dda.step_x = 1;
+		data->dda.side_distance_x =
+            (data->dda.map_x + 1.0 - data->player.x) * data->dda.delta_distance_x;
 	}
-	
-	if (ray_direction_y < 0)
+
+	if (data->dda.ray_direction_y < 0)
 	{
-		step_y = -1;
-		side_distance_y = (data->player.y - map_y) * delta_distance_y;
+		data->dda.step_y = -1;
+		data->dda.side_distance_y =
+            (data->player.y - data->dda.map_y) * data->dda.delta_distance_y;
 	}
 	else
 	{
-		step_y = 1;
-		side_distance_y = (map_y + 1.0 - data->player.y) * delta_distance_y;
+		data->dda.step_y = 1;
+		data->dda.side_distance_y =
+            (data->dda.map_y + 1.0 - data->player.y) * data->dda.delta_distance_y;
 	}
+}
 
-	while (!hit)
+void    calculate_distance_to_wall(t_data *data)
+{
+    bool    hit;
+
+    hit = false;
+    while (!hit)
 	{
-    	if (side_distance_x < side_distance_y)
+    	if (data->dda.side_distance_x < data->dda.side_distance_y)
     	{
-    	    side_distance_x += delta_distance_x;
-    	    map_x += step_x;
-    	    side = 0;
+    	    data->dda.side_distance_x += data->dda.delta_distance_x;
+    	    data->dda.map_x += data->dda.step_x;
+    	    data->dda.side = 0;
     	}
     	else
     	{
-    	    side_distance_y += delta_distance_y;
-    	    map_y += step_y;
-    	    side = 1;
+    	    data->dda.side_distance_y += data->dda.delta_distance_y;
+    	    data->dda.map_y += data->dda.step_y;
+    	    data->dda.side = 1;
     	}
 
-    	if (data->map[map_x][map_y] == '1')
+    	if (data->map[data->dda.map_x][data->dda.map_y] == '1')
 		{
         	hit = true;
-			if (side == 0)
-				distance_to_wall = (map_x - data->player.x + (1 - step_x) / 2) / ray_direction_x;
-			else if (side == 1)
-				distance_to_wall = (map_y - data->player.y + (1 - step_y) / 2) / ray_direction_x;
-			return (distance_to_wall);
+			if (data->dda.side == 0)
+				data->dda.distance_to_wall = (data->dda.map_x - data->player.x + (1 - data->dda.step_x) / 2) / data->dda.ray_direction_x;
+			else if (data->dda.side == 1)
+				data->dda.distance_to_wall = (data->dda.map_y - data->player.y + (1 - data->dda.step_y) / 2) / data->dda.ray_direction_y;
 		}
 	}
-	return (0);
+}
+
+void  get_distance(t_data *data, double window_x)
+{
+    calculate_dda_variables(data, window_x);
+    calculate_step_and_side_distance(data);
+    calculate_distance_to_wall(data);
 }
