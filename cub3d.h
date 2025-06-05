@@ -127,7 +127,7 @@ void	tmp_overwrite(t_data *data);
 void	render_map(t_data *data);
 void	movement_init(t_data *data);
 int		hook_idle(t_data *data);
-int		hook_key(t_data *data);
+int		hook_key(int key, t_data *data);
 void	move_forward(t_data *data);
 void	move_backward(t_data *data);
 void	move_left(t_data *data);

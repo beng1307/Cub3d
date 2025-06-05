@@ -6,7 +6,7 @@
 /*   By: jwolfram <jwolfram@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:57:07 by jwolfram          #+#    #+#             */
-/*   Updated: 2025/06/04 18:02:57 by jwolfram         ###   ########.fr       */
+/*   Updated: 2025/06/05 17:25:07 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ int	hook_idle(t_data *data)
 	return (0);
 }
 
-int	hook_key(t_data *data)
+int	hook_key(int key, t_data *data)
 {
-	if (MOVE_FORWARD)
+	if (key == MOVE_FORWARD)
 		move_forward(data);
-	else if (MOVE_BACKWARD)
+	else if (key == MOVE_BACKWARD)
 		move_backward(data);
-	else if (MOVE_LEFT)
+	else if (key == MOVE_LEFT)
 		move_left(data);
-	else if (MOVE_RIGHT)
+	else if (key == MOVE_RIGHT)
 		move_right(data);
 	return (0);
 }
