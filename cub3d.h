@@ -37,6 +37,7 @@ typedef struct	s_mlx
 	void	*mlx_pointer;
 	void	*mlx_window;
 	void	*mlx_image;
+	void	*image_buffer;
 
 }				t_mlx;
 
@@ -135,6 +136,8 @@ bool    is_map_content(char c);
 //ERROR_HANDLING
 void	clean_exit(t_data *data, char *error_message);
 
+//RAY_CASTING
+void  get_distance(t_data *data, double window_x);
 
 
 
