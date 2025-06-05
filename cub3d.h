@@ -71,6 +71,15 @@ typedef struct	s_assets
 	int			ceiling_rgb[3];
 }				t_assets;
 
+typedef struct s_img
+{
+	void	*mlx_img;
+	char	*addr;
+	int		bpp;
+	int		len;
+	int		endian;
+}	t_img;
+
 typedef struct	s_player
 {
 		double	x;
@@ -89,6 +98,7 @@ typedef struct	s_data
 
 	t_mlx		mlx;
 	t_assets	assets;
+	t_img		window_img;
 	t_player	player;
 
 	int			gnl_error;
@@ -114,6 +124,7 @@ void	clean_exit(t_data *data, char *error_message);
 
 //PLAYER_MOVEMENT
 void	tmp_overwrite(t_data *data);
+void	render_map(t_data *data);
 void	movement_init(t_data *data);
 int		hook_idle(t_data *data);
 int		hook_key(t_data *data);

@@ -1,14 +1,5 @@
 #include "../cub3d.h"
 
-typedef struct s_img
-{
-	void	*mlx_img;
-	char	*addr;
-	int		bpp;
-	int		len;
-	int		endian;
-}	t_img;
-
 void	overwrite_map(t_data *data)
 {
 	data->map = (char **)ft_calloc(6, sizeof(char *));
@@ -21,13 +12,11 @@ void	overwrite_map(t_data *data)
 	data->player.x = 2.5;
 }
 
-t_img	img_init(t_data *data)
+void	img_init(t_data *data)
 {
-	t_img	img;
-
-	img.mlx_img = data->mlx.mlx_image;
-	img.addr = mlx_get_data_addr(img.mlx_img, &img.bpp, &img.len, &img.endian);
-	return (img);	
+	data->window_img.mlx_img = data->mlx.mlx_image;
+	data->window_img.addr = mlx_get_data_addr(data->window_img.mlx_img,
+		&data->window_img.bpp, &data->window_img.len, &data->window_img.endian);
 }
 
 void	put_pixel(t_img *img, int y, int x, int color)
@@ -40,30 +29,51 @@ void	put_pixel(t_img *img, int y, int x, int color)
 	*(int *)pixel = color;
 }
 
-void	render_rectangle(t_data *data, t_img *img, int y, int x)
+void	render_rectangle(t_img *img, int y, int x, int color)
 {
 	int i;
 	int	j;
 
 	i = y;
-	while (i < y + (WIN_HEIGHT / 5))
+	while (i < y + 42)
 	{
 		j = x;
-		while (j < x + (WIN_WIDTH / 5))
+		while (j < x + 42)
 		{
-			if (data->map[y][x] == '1')
-				put_pixel(img, y, x, RED);
+			put_pixel(img, i, j, color);
 			j++;
 		}
 		i++;
 	}
 }
 
+void	render_map(t_data *data)
+{
+	int		y;
+	int		x;
+
+	y = 0;
+	while (data->map[y])
+	{
+		x = 0;
+		while (data->map[y][x])
+		{
+			if (data->map[y][x] == '1')
+				render_rectangle(&data->window_img, y * 42, x * 42, RED);
+			else if (data->map[y][x] == '0')
+				render_rectangle(&data->window_img, y * 42, x * 42, 0x00ff00);
+			x++;
+		}
+		y++;
+	}
+	put_pixel(&data->window_img, data->player.y * 42, data->player.x * 42, 0xff);
+	put_pixel(&data->window_img, data->player.y * 42 + 1, data->player.x * 42, 0xff);
+	put_pixel(&data->window_img, data->player.y * 42 + 1, data->player.x * 42 + 1, 0xff);
+	put_pixel(&data->window_img, data->player.y * 42, data->player.x * 42 + 1, 0xff);
+}
+
 void	tmp_overwrite(t_data *data)
 {
-	t_img	img;
-
 	overwrite_map(data);
-	img = img_init(data);
-	render_rectangle(data, &img, 0, 0);
+	img_init(data);
 }

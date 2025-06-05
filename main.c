@@ -21,6 +21,8 @@ int	main(int ac, char **av)
 	parse_and_init(&data, av[1]);
 	tmp_overwrite(&data); //dev
 	movement_init(&data);
+	render_map(&data);
+	mlx_put_image_to_window(data.mlx.mlx_pointer, data.mlx.mlx_window, data.mlx.mlx_image, 0, 0);
 	mlx_loop(data.mlx.mlx_pointer);
 
 	return (0);
