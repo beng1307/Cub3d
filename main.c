@@ -20,6 +20,8 @@ int	main(int ac, char **av)
 	ft_memset(&data, 0, sizeof(data));
 	parse_and_init(&data, av[1]);
 
+	raycasting(&data);
+	while (1);
 	mlx_loop(data.mlx.mlx_pointer);
 
 	return (0);

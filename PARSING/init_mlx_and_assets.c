@@ -70,9 +70,13 @@ void    init_mlx_and_assets(t_data *data)
     data->mlx.mlx_image = mlx_new_image(data->mlx.mlx_pointer, WIN_WIDTH, WIN_HEIGHT);
     if (!data->mlx.mlx_image)
         clean_exit(data, "Mlx image initialization failed!");
+    data->mlx.image_buffer = mlx_new_image(data->mlx.mlx_pointer, WIN_WIDTH, WIN_HEIGHT);
+    if (!data->mlx.image_buffer)
+        clean_exit(data, "Mlx image buffer initialization failed!");
     data->mlx.mlx_window = mlx_new_window(data->mlx.mlx_pointer, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
     if (!data->mlx.mlx_window)
         clean_exit(data, "Mlx window initialization failed!");
+    
     // data->assets.north_texture = mlx_xpm_file_to_image(data->mlx.mlx_pointer, data->assets.north_texture_file, &width, &height);
     // if (!data->assets.north_texture || width != TEXTURE_SIZE || height != TEXTURE_SIZE)
     //     clean_exit(data, "Mlx texture initialzation failed or wrong asset size!");

@@ -8,6 +8,7 @@
 // #include <X11/keysym.h>
 #include <stdbool.h>
 #include <fcntl.h>
+#include <math.h>
 #include "mlx/mlx.h"
 #include "libft/libft.h"
 
@@ -138,6 +139,8 @@ void	clean_exit(t_data *data, char *error_message);
 
 //RAY_CASTING
 void  get_distance(t_data *data, double window_x);
+void	draw_inside_buffer(t_data *data, int window_x);
+void raycasting(t_data *data);
 
 
 
