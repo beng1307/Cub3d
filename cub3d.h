@@ -16,9 +16,9 @@
 # define	TURN_LEFT 
 # define	TURN_RIGHT
 # define	MOVE_FORWARD 65362
-# define	MOVE_BACKWARD 65361
-# define	MOVE_LEFT 65363
-# define	MOVE_RIGHT 65364
+# define	MOVE_BACKWARD 65364
+# define	MOVE_LEFT 65361
+# define	MOVE_RIGHT 65363
 
 # define	ESCAPE 65307
 

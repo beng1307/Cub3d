@@ -6,7 +6,7 @@
 /*   By: jwolfram <jwolfram@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:57:07 by jwolfram          #+#    #+#             */
-/*   Updated: 2025/06/05 17:25:07 by jwolfram         ###   ########.fr       */
+/*   Updated: 2025/06/09 15:32:00 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@ int	hook_idle(t_data *data)
 
 int	hook_key(int key, t_data *data)
 {
-	if (key == MOVE_FORWARD)
+	printf("%d\n", key);
+	if (key == MOVE_FORWARD || key == 'w')
 		move_forward(data);
-	else if (key == MOVE_BACKWARD)
+	else if (key == MOVE_BACKWARD || key == 's')
 		move_backward(data);
-	else if (key == MOVE_LEFT)
+	else if (key == MOVE_LEFT || key == 'a')
 		move_left(data);
-	else if (key == MOVE_RIGHT)
+	else if (key == MOVE_RIGHT || key == 'd')
 		move_right(data);
 	return (0);
 }
