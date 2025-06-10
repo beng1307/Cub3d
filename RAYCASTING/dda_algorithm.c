@@ -9,8 +9,8 @@ void    calculate_dda_variables(t_data *data, double window_x)
     data->dda.map_y = (int)data->player.y;
     data->dda.ray_direction_x = data->player.dir_x + data->player.plane_x * camera;
     data->dda.ray_direction_y = data->player.dir_y + data->player.plane_y * camera;
-    data->dda.delta_distance_x = fabs(1 / data->dda.ray_direction_x);
-    data->dda.delta_distance_y = fabs(1 / data->dda.ray_direction_y);
+    data->dda.delta_distance_x = fabs(1 / data->dda.ray_direction_x); //maybe fabs
+    data->dda.delta_distance_y = fabs(1 / data->dda.ray_direction_y); //maybe fabs
 }
 
 void    calculate_step_and_side_distance(t_data *data)
