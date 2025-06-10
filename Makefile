@@ -1,7 +1,6 @@
 COMPILE = cc -g -Wall -Werror -Wextra
 
-MLX_FLAGS = -lXext -lX11 -lmlx
-#-lmlx
+MLX_FLAGS = -lXext -lX11 -lmlx -lm
 
 MLX = mlx/libmlx.a
 MLX_H = -I mlx

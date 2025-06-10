@@ -14,12 +14,12 @@
 
 
 //put keynumbers
-# define	TURN_LEFT 
-# define	TURN_RIGHT
-# define	MOVE_FORWARD 65362
-# define	MOVE_BACKWARD 65364
-# define	MOVE_LEFT 65361
-# define	MOVE_RIGHT 65363
+# define	ROTATE_LEFT 65361
+# define	ROTATE_RIGHT 65363
+# define	MOVE_FORWARD 'w'
+# define	MOVE_BACKWARD 's'
+# define	MOVE_LEFT 'a'
+# define	MOVE_RIGHT 'd'
 
 # define	ESCAPE 65307
 
@@ -158,6 +158,8 @@ int		hook_idle(t_data *data);
 int		hook_key(int key, t_data *data);
 void	move_forward(t_data *data);
 void	move_backward(t_data *data);
+void	move_left(t_data *data);
+void	move_right(t_data *data);
 void	rotate_left(t_data *data);
 void	rotate_right(t_data *data);
 

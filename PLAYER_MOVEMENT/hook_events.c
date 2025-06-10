@@ -6,7 +6,7 @@
 /*   By: jwolfram <jwolfram@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:57:07 by jwolfram          #+#    #+#             */
-/*   Updated: 2025/06/10 14:11:07 by jwolfram         ###   ########.fr       */
+/*   Updated: 2025/06/10 17:37:51 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,20 @@ int	hook_idle(t_data *data)
 
 int	hook_key(int key, t_data *data)
 {
-	if (key == MOVE_FORWARD || key == 'w')
+	if (key == MOVE_FORWARD)
 		move_forward(data);
-	else if (key == MOVE_BACKWARD || key == 's')
+	else if (key == MOVE_BACKWARD)
 		move_backward(data);
-	else if (key == MOVE_LEFT || key == 'a')
+	else if (key == MOVE_LEFT)
+		move_left(data);
+	else if (key == MOVE_RIGHT)
+		move_right(data);
+	else if (key == ROTATE_LEFT)
 		rotate_left(data);
-	else if (key == MOVE_RIGHT || key == 'd')
+	else if (key == ROTATE_RIGHT)
 		rotate_right(data);
+	render_map(data);
+	mlx_put_image_to_window(data->mlx.mlx_pointer,
+		data->mlx.mlx_window, data->mlx.mlx_image, 0, 0);
 	return (0);
 }

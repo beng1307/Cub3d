@@ -1,4 +1,5 @@
 #include "../cub3d.h"
+#include <stdio.h>
 
 void	overwrite_map(t_data *data)
 {
@@ -47,6 +48,15 @@ void	render_rectangle(t_img *img, int y, int x, int color)
 	}
 }
 
+void	render_player(t_data *data)
+{
+	put_pixel(&data->window_img, data->player.y * 42, data->player.x * 42, 0xff);
+	put_pixel(&data->window_img, data->player.y * 42 + 1, data->player.x * 42, 0xff);
+	put_pixel(&data->window_img, data->player.y * 42 + 1, data->player.x * 42 + 1, 0xff);
+	put_pixel(&data->window_img, data->player.y * 42, data->player.x * 42 + 1, 0xff);
+	dprintf(2, "player dir %f %f\n", data->player.dir_y, data->player.dir_x);
+}
+
 void	render_map(t_data *data)
 {
 	int		y;
@@ -66,10 +76,7 @@ void	render_map(t_data *data)
 		}
 		y++;
 	}
-	put_pixel(&data->window_img, data->player.y * 42, data->player.x * 42, 0xff);
-	put_pixel(&data->window_img, data->player.y * 42 + 1, data->player.x * 42, 0xff);
-	put_pixel(&data->window_img, data->player.y * 42 + 1, data->player.x * 42 + 1, 0xff);
-	put_pixel(&data->window_img, data->player.y * 42, data->player.x * 42 + 1, 0xff);
+	render_player(data);
 }
 
 void	tmp_overwrite(t_data *data)
