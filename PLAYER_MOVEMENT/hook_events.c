@@ -6,7 +6,7 @@
 /*   By: jwolfram <jwolfram@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:57:07 by jwolfram          #+#    #+#             */
-/*   Updated: 2025/06/10 17:37:51 by jwolfram         ###   ########.fr       */
+/*   Updated: 2025/06/10 17:58:30 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,11 @@ int	hook_key(int key, t_data *data)
 		rotate_left(data);
 	else if (key == ROTATE_RIGHT)
 		rotate_right(data);
-	render_map(data);
-	mlx_put_image_to_window(data->mlx.mlx_pointer,
-		data->mlx.mlx_window, data->mlx.mlx_image, 0, 0);
+	printf("y is %f\n", data->player.y);
+	printf("x is %f\n", data->player.x);
+	raycasting(data);
+	//render_map(data);
+	//mlx_put_image_to_window(data->mlx.mlx_pointer,
+		//data->mlx.mlx_window, data->mlx.mlx_image, 0, 0);
 	return (0);
 }

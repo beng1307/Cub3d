@@ -19,11 +19,11 @@ int	main(int ac, char **av)
 	check_filename(av[1]);
 	ft_memset(&data, 0, sizeof(data));
 	parse_and_init(&data, av[1]);
-	tmp_overwrite(&data); //dev
+//	tmp_overwrite(&data); //dev
 	movement_init(&data);
-	render_map(&data);
+	//render_map(&data);
 	mlx_put_image_to_window(data.mlx.mlx_pointer, data.mlx.mlx_window, data.mlx.mlx_image, 0, 0);
-//	raycasting(&data);
+	raycasting(&data);
 	mlx_loop(data.mlx.mlx_pointer);
 	return (0);
 }

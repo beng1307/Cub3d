@@ -6,7 +6,7 @@
 /*   By: jwolfram <jwolfram@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 18:08:17 by jwolfram          #+#    #+#             */
-/*   Updated: 2025/06/10 17:40:11 by jwolfram         ###   ########.fr       */
+/*   Updated: 2025/06/10 18:08:18 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,27 +28,27 @@ void	move_backward(t_data *data)
 		[(int)(data->player.x)] == '0')
 		data->player.y -= data->player.dir_y * 0.1;
 	if (data->map[(int)(data->player.y)]
-		[(int)(data->player.x - data->player.dir_x * 0.1)])
+		[(int)(data->player.x - data->player.dir_x * 0.1)] == '0')
 		data->player.x -= data->player.dir_x * 0.1;
 }
 
 void	move_left(t_data *data)
 {
-	if (data->map[(int)(data->player.y + data->player.dir_x * 0.1)]
+	if (data->map[(int)(data->player.y - data->player.dir_x * 0.1)]
 		[(int)(data->player.x)] == '0')
-		data->player.y += data->player.dir_x * 0.1;
+		data->player.y -= data->player.dir_x * 0.1;
 	if (data->map[(int)(data->player.y)]
-		[(int)(data->player.x + data->player.dir_y * 0.1)])
+		[(int)(data->player.x + data->player.dir_y * 0.1)] == '0')
 		data->player.x += data->player.dir_y * 0.1;
 }
 
 void	move_right(t_data *data)
 {
-	if (data->map[(int)(data->player.y - data->player.dir_x * 0.1)]
+	if (data->map[(int)(data->player.y + data->player.dir_x * 0.1)]
 		[(int)(data->player.x)] == '0')
-		data->player.y -= data->player.dir_x * 0.1;
+		data->player.y += data->player.dir_x * 0.1;
 	if (data->map[(int)(data->player.y)]
-		[(int)(data->player.x - data->player.dir_y * 0.1)])
+		[(int)(data->player.x - data->player.dir_y * 0.1)] == '0')
 		data->player.x -= data->player.dir_y * 0.1;
 }
 
