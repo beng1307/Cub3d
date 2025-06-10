@@ -61,13 +61,12 @@ void    calculate_distance_to_wall(t_data *data)
     	    data->dda.map_y += data->dda.step_y;
     	    data->dda.side = 1;
     	}
-
-    	if (data->map[data->dda.map_x][data->dda.map_y] == '1')
+    	if (data->map[data->dda.map_y][data->dda.map_x] == '1')
 		{
         	hit = true;
 			if (data->dda.side == 0)
 				data->dda.distance_to_wall = (data->dda.map_x - data->player.x + (1 - data->dda.step_x) / 2) / data->dda.ray_direction_x;
-			else if (data->dda.side == 1)
+			else
 				data->dda.distance_to_wall = (data->dda.map_y - data->player.y + (1 - data->dda.step_y) / 2) / data->dda.ray_direction_y;
 		}
 	}
