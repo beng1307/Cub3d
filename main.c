@@ -23,7 +23,7 @@ int	main(int ac, char **av)
 	movement_init(&data);
 	render_map(&data);
 	mlx_put_image_to_window(data.mlx.mlx_pointer, data.mlx.mlx_window, data.mlx.mlx_image, 0, 0);
+//	raycasting(&data);
 	mlx_loop(data.mlx.mlx_pointer);
-
 	return (0);
 }

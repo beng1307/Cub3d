@@ -9,6 +9,7 @@
 #include <stdbool.h>
 #include <fcntl.h>
 #include <mlx.h>
+#include <math.h>
 #include "libft/libft.h"
 
 
@@ -40,6 +41,7 @@ typedef struct	s_mlx
 	void	*mlx_pointer;
 	void	*mlx_window;
 	void	*mlx_image;
+	void	*image_buffer;
 
 }				t_mlx;
 
@@ -82,13 +84,40 @@ typedef struct s_img
 
 typedef struct	s_player
 {
-		double	x;
-		double	y;
-		double	dir_x;
-		double	dir_y;
+	double	x;
+	double	y;
+	
+	double	dir_x;
+	double	dir_y;
+	
+	double	plane_x;
+	double	plane_y;
 
 		
 }				t_player;
+
+typedef struct	s_dda
+{
+	int		side;
+
+	double	camera;
+	double	distance_to_wall;	
+
+	int		map_x;
+	int		map_y;
+
+	int		step_x;
+	int		step_y;
+
+	double	ray_direction_x;
+	double	ray_direction_y;
+
+	double	delta_distance_x;
+	double	delta_distance_y;
+
+	double	side_distance_x;
+	double	side_distance_y;
+}				t_dda;
 
 typedef struct	s_data
 {
@@ -100,10 +129,9 @@ typedef struct	s_data
 	t_assets	assets;
 	t_img		window_img;
 	t_player	player;
+	t_dda		dda;
 
 	int			gnl_error;
-
-
 }				t_data;
 
 	
@@ -132,5 +160,10 @@ void	move_forward(t_data *data);
 void	move_backward(t_data *data);
 void	rotate_left(t_data *data);
 void	rotate_right(t_data *data);
+
+//RAY_CASTING
+void	get_distance(t_data *data, double window_x);
+void	draw_inside_buffer(t_data *data, int window_x);
+void	raycasting(t_data *data);
 
 #endif
