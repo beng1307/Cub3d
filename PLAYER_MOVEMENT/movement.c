@@ -6,7 +6,7 @@
 /*   By: jwolfram <jwolfram@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 18:08:17 by jwolfram          #+#    #+#             */
-/*   Updated: 2025/06/09 15:28:59 by jwolfram         ###   ########.fr       */
+/*   Updated: 2025/06/10 14:12:13 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ void	move_backward(t_data *data)
 	mlx_put_image_to_window(data->mlx.mlx_pointer, data->mlx.mlx_window, data->mlx.mlx_image, 0, 0);
 }
 
-void	move_left(t_data *data)
+void	rotate_left(t_data *data)
 {
 	(void)data;
 }
 
-void	move_right(t_data *data)
+void	rotate_right(t_data *data)
 {
 	(void)data;
 }

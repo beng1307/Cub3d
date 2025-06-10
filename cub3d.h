@@ -130,7 +130,7 @@ int		hook_idle(t_data *data);
 int		hook_key(int key, t_data *data);
 void	move_forward(t_data *data);
 void	move_backward(t_data *data);
-void	move_left(t_data *data);
-void	move_right(t_data *data);
+void	rotate_left(t_data *data);
+void	rotate_right(t_data *data);
 
 #endif
