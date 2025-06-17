@@ -23,6 +23,9 @@
 
 # define	ESCAPE 65307
 
+# define	SPEED 0.1
+# define	COLLISION 0.2
+
 # define	MAX_MAP_HEIGHT 32
 # define	MAX_MAP_WIDTH 32
 # define	MAX_MAP_SIZE (MAX_MAP_HEIGHT * MAX_MAP_WIDTH)

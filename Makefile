@@ -19,7 +19,8 @@ CUB3D_SRCS = main.c \
 	PLAYER_MOVEMENT/tmp_overwrite.c \
 	PLAYER_MOVEMENT/movement_init.c \
 	PLAYER_MOVEMENT/hook_events.c \
-	PLAYER_MOVEMENT/movement.c \
+	PLAYER_MOVEMENT/move_player.c \
+	PLAYER_MOVEMENT/rotate_player.c \
 	RAYCASTING/dda_algorithm.c \
 	RAYCASTING/draw_inside_buffer.c \
 	RAYCASTING/raycasting.c \
