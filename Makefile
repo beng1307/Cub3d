@@ -1,6 +1,8 @@
 COMPILE = cc -g -Wall -Werror -Wextra
 
-MLX_FLAGS = -lXext -lX11 -lmlx -lm
+MLX_FLAGS = -lXext -lX11 -lm
+#-lmlx
+
 
 MLX = mlx/libmlx.a
 MLX_H = -I mlx
@@ -29,8 +31,9 @@ OBJDIR = obj
 
 CUB3D_OBJS = $(patsubst %.c,$(OBJDIR)/%.o,$(CUB3D_SRCS))
 
-$(CUB3d): $(CUB3D_OBJS) $(LIBFT)
-	$(COMPILE) $(CUB3D_OBJS) $(LIBFT) $(MLX_FLAGS) -o $(CUB3d)
+$(CUB3d): $(CUB3D_OBJS) $(LIBFT) $(MLX)
+	$(COMPILE) $(CUB3D_OBJS) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(CUB3d)
+
 
 $(MLX):
 	cd mlx && make all

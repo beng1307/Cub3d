@@ -8,7 +8,7 @@
 // #include <X11/keysym.h>
 #include <stdbool.h>
 #include <fcntl.h>
-#include <mlx.h>
+#include "mlx/mlx.h"
 #include <math.h>
 #include "libft/libft.h"
 

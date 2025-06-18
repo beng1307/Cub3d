@@ -7,7 +7,7 @@ void	draw_ceiling(t_data *data, int window_x, int wall_start)
 	window_y = 0;
 	while (window_y < wall_start)
 	{
-		mlx_pixel_put(data->mlx.mlx_pointer, data->mlx.mlx_window, window_x, window_y, 0x0000FF);
+		mlx_pixel_put(data->mlx.mlx_pointer, data->mlx.mlx_window, window_x, window_y, 0x87CEEB);
 		window_y++;
 	}
 }
@@ -19,7 +19,7 @@ void	draw_wall(t_data *data, int window_x, int wall_start, int wall_end)
 	window_y = wall_start;
 	while (window_y < wall_end)
 	{
-		mlx_pixel_put(data->mlx.mlx_pointer, data->mlx.mlx_window, window_x, window_y, 0xb03060);
+		mlx_pixel_put(data->mlx.mlx_pointer, data->mlx.mlx_window, window_x, window_y, 0x228B22);
 		window_y++;
 	}
 }
@@ -31,7 +31,7 @@ void	draw_floor(t_data *data, int window_x, int wall_end)
 	window_y = wall_end;
 	while (window_y < WIN_HEIGHT)
 	{
-		mlx_pixel_put(data->mlx.mlx_pointer, data->mlx.mlx_window, window_x, window_y, 0xf5deb3);
+		mlx_pixel_put(data->mlx.mlx_pointer, data->mlx.mlx_window, window_x, window_y, 0x8B4513);
 		window_y++;
 	}
 }
