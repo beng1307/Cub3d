@@ -48,7 +48,6 @@ typedef struct	s_mlx
 
 }				t_mlx;
 
-
 typedef struct	s_assets
 {
 	char		*north_texture_file;
@@ -84,6 +83,14 @@ typedef struct s_img
 	int		len;
 	int		endian;
 }	t_img;
+
+typedef struct	s_buffer
+{
+	char		*buffer_address;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+}				t_buffer;
 
 typedef struct	s_player
 {
@@ -133,6 +140,7 @@ typedef struct	s_data
 	t_img		window_img;
 	t_player	player;
 	t_dda		dda;
+	t_buffer	buffer;
 
 	int			gnl_error;
 }				t_data;
