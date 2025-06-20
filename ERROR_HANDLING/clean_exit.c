@@ -2,14 +2,14 @@
 
 void	mlx_cleanup(t_data *data)
 {
-	if (data->assets.east_texture)
-		mlx_destroy_image(data->mlx.mlx_pointer, data->assets.east_texture);
-	if (data->assets.west_texture)
-		mlx_destroy_image(data->mlx.mlx_pointer, data->assets.west_texture);
-	if (data->assets.south_texture)
-		mlx_destroy_image(data->mlx.mlx_pointer, data->assets.south_texture);
-	if (data->assets.north_texture)
-		mlx_destroy_image(data->mlx.mlx_pointer, data->assets.north_texture);
+	if (data->assets.ea.texture)
+		mlx_destroy_image(data->mlx.mlx_pointer, data->assets.ea.texture);
+	if (data->assets.we.texture)
+		mlx_destroy_image(data->mlx.mlx_pointer, data->assets.we.texture);
+	if (data->assets.so.texture)
+		mlx_destroy_image(data->mlx.mlx_pointer, data->assets.so.texture);
+	if (data->assets.no.texture)
+		mlx_destroy_image(data->mlx.mlx_pointer, data->assets.no.texture);
 	if (data->mlx.mlx_image)
 		mlx_destroy_image(data->mlx.mlx_pointer, data->mlx.mlx_image);
 	if (data->mlx.mlx_window)
