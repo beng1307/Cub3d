@@ -6,37 +6,82 @@
 /*   By: jwolfram <jwolfram@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:57:07 by jwolfram          #+#    #+#             */
-/*   Updated: 2025/06/10 17:58:30 by jwolfram         ###   ########.fr       */
+/*   Updated: 2025/06/20 16:38:33 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	hook_idle(t_data *data)
+int	should_render(t_data *data)
 {
-	(void)data;
+	struct timeval	tmp;
+	long			current;
+	long			last_update;
+
+	last_update = data->player.move.last_update.tv_sec * 1000
+		+ data->player.move.last_update.tv_usec / 1000;
+	if (gettimeofday(&tmp, NULL) == -1)
+		clean_exit(data, "Function gettimeofday failed\n");
+	current = tmp.tv_sec * 1000 + tmp.tv_usec / 1000;
+	if (current >= last_update + 20)	
+		return (1);
 	return (0);
 }
 
-int	hook_key(int key, t_data *data)
+int	hook_idle(t_data *data)
 {
-	if (key == MOVE_FORWARD)
+	if (!should_render(data))
+		return (0);
+	if (data->player.move.forward)
 		move_forward(data);
-	else if (key == MOVE_BACKWARD)
+	if (data->player.move.backward)
 		move_backward(data);
-	else if (key == MOVE_LEFT)
+	if (data->player.move.left)
 		move_left(data);
-	else if (key == MOVE_RIGHT)
+	if (data->player.move.right)
 		move_right(data);
-	else if (key == ROTATE_LEFT)
+	if (data->player.move.rotate_left)
 		rotate_left(data);
-	else if (key == ROTATE_RIGHT)
+	if (data->player.move.rotate_right)
 		rotate_right(data);
 	printf("y is %f\n", data->player.y);
 	printf("x is %f\n", data->player.x);
 	raycasting(data);
-	//render_map(data);
-	//mlx_put_image_to_window(data->mlx.mlx_pointer,
-		//data->mlx.mlx_window, data->mlx.mlx_image, 0, 0);
+	if (gettimeofday(&data->player.move.last_update, NULL) == -1)
+		clean_exit(data, "Function gettimeofday failed\n");
+	return (0);
+}
+
+int	hook_key_press(int key, t_data *data)
+{
+	if (key == MOVE_FORWARD)
+		data->player.move.forward = true;
+	else if (key == MOVE_BACKWARD)
+		data->player.move.backward = true;
+	else if (key == MOVE_LEFT)
+		data->player.move.left = true;
+	else if (key == MOVE_RIGHT)
+		data->player.move.right = true;
+	else if (key == ROTATE_LEFT)
+		data->player.move.rotate_left = true;
+	else if (key == ROTATE_RIGHT)
+		data->player.move.rotate_right = true;
+	return (0);
+}
+
+int	hook_key_release(int key, t_data *data)
+{
+	if (key == MOVE_FORWARD)
+		data->player.move.forward = false;
+	else if (key == MOVE_BACKWARD)
+		data->player.move.backward = false;
+	else if (key == MOVE_LEFT)
+		data->player.move.left = false;
+	else if (key == MOVE_RIGHT)
+		data->player.move.right = false;
+	else if (key == ROTATE_LEFT)
+		data->player.move.rotate_left = false;
+	else if (key == ROTATE_RIGHT)
+		data->player.move.rotate_right = false;
 	return (0);
 }

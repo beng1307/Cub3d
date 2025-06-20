@@ -5,10 +5,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <sys/time.h>
 // #include <X11/keysym.h>
 #include <stdbool.h>
 #include <fcntl.h>
-#include "mlx/mlx.h"
+//#include "mlx/mlx.h"
+#include <mlx.h>
 #include <math.h>
 #include "libft/libft.h"
 
@@ -41,109 +43,120 @@
 //Structs
 typedef struct	s_mlx
 {
-	void	*mlx_pointer;
-	void	*mlx_window;
-	void	*mlx_image;
-	void	*image_buffer;
-
-}				t_mlx;
+	void			*mlx_pointer;
+	void			*mlx_window;
+	void			*mlx_image;
+	void			*image_buffer;
+}	t_mlx;
 
 typedef struct	s_assets
 {
-	char		*north_texture_file;
-	bool		no_texture_found;
-	void		*north_texture;
+	char			*north_texture_file;
+	bool			no_texture_found;
+	void			*north_texture;
 	
-	char		*east_texture_file;
-	bool		ea_texture_found;
-	void		*east_texture;
+	char			*east_texture_file;
+	bool			ea_texture_found;
+	void			*east_texture;
 	
-	char		*south_texture_file;
-	bool		so_texture_found;
-	void		*south_texture;
+	char			*south_texture_file;
+	bool			so_texture_found;
+	void			*south_texture;
 	
-	char		*west_texture_file;
-	bool		we_texture_found;
-	void		*west_texture;
+	char			*west_texture_file;
+	bool			we_texture_found;
+	void			*west_texture;
 	
-	char		*floor_color_rgb;
-	bool		floor_color_found;
-	int			floor_rgb[3];
+	char			*floor_color_rgb;
+	bool			floor_color_found;
+	int				floor_rgb[3];
 	
-	char		*ceiling_color_rgb;
-	bool		ceiling_color_found;
-	int			ceiling_rgb[3];
-}				t_assets;
+	char			*ceiling_color_rgb;
+	bool			ceiling_color_found;
+	int				ceiling_rgb[3];
+}	t_assets;
 
 typedef struct s_img
 {
-	void	*mlx_img;
-	char	*addr;
-	int		bpp;
-	int		len;
-	int		endian;
+	void			*mlx_img;
+	char			*addr;
+	int				bpp;
+	int				len;
+	int				endian;
 }	t_img;
 
 typedef struct	s_buffer
 {
-	char		*buffer_address;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-}				t_buffer;
+	char			*buffer_address;
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
+}	t_buffer;
+
+typedef struct	s_move
+{
+	struct timeval	last_update;
+
+	bool			forward;
+	bool			backward;
+	bool			left;
+	bool			right;
+	bool			rotate_left;
+	bool			rotate_right;
+}	t_move;
 
 typedef struct	s_player
 {
-	double	x;
-	double	y;
+	double			x;
+	double			y;
 	
-	double	dir_x;
-	double	dir_y;
+	double			dir_x;
+	double			dir_y;
 	
-	double	plane_x;
-	double	plane_y;
+	double			plane_x;
+	double			plane_y;
 
-		
-}				t_player;
+	t_move			move;	
+}	t_player;
 
 typedef struct	s_dda
 {
-	int		side;
+	int				side;
 
-	double	camera;
-	double	distance_to_wall;	
+	double			camera;
+	double			distance_to_wall;	
 
-	int		map_x;
-	int		map_y;
+	int				map_x;
+	int				map_y;
 
-	int		step_x;
-	int		step_y;
+	int				step_x;
+	int				step_y;
 
-	double	ray_direction_x;
-	double	ray_direction_y;
+	double			ray_direction_x;
+	double			ray_direction_y;
 
-	double	delta_distance_x;
-	double	delta_distance_y;
+	double			delta_distance_x;
+	double			delta_distance_y;
 
-	double	side_distance_x;
-	double	side_distance_y;
-}				t_dda;
+	double			side_distance_x;
+	double			side_distance_y;
+}	t_dda;
 
 typedef struct	s_data
 {
-	int			file;
-	char		**file_content;
-	char		**map;
+	int				file;
+	char			**file_content;
+	char			**map;
 
-	t_mlx		mlx;
-	t_assets	assets;
-	t_img		window_img;
-	t_player	player;
-	t_dda		dda;
-	t_buffer	buffer;
+	t_mlx			mlx;
+	t_assets		assets;
+	t_img			window_img;
+	t_player		player;
+	t_dda			dda;
+	t_buffer		buffer;
 
-	int			gnl_error;
-}				t_data;
+	int				gnl_error;
+}	t_data;
 
 	
 	
@@ -166,7 +179,8 @@ void	tmp_overwrite(t_data *data);
 void	render_map(t_data *data);
 void	movement_init(t_data *data);
 int		hook_idle(t_data *data);
-int		hook_key(int key, t_data *data);
+int		hook_key_press(int key, t_data *data);
+int		hook_key_release(int key, t_data *data);
 void	move_forward(t_data *data);
 void	move_backward(t_data *data);
 void	move_left(t_data *data);
