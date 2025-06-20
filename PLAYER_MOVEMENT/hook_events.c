@@ -6,7 +6,7 @@
 /*   By: jwolfram <jwolfram@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:57:07 by jwolfram          #+#    #+#             */
-/*   Updated: 2025/06/20 16:58:02 by jwolfram         ###   ########.fr       */
+/*   Updated: 2025/06/20 17:19:59 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,11 @@ int	hook_key_press(int key, t_data *data)
 		data->player.move.rotate_left = true;
 	else if (key == ROTATE_RIGHT)
 		data->player.move.rotate_right = true;
+	else if (key == ESCAPE)
+	{
+		mlx_loop_end(data->mlx.mlx_pointer);
+		clean_exit(data, NULL);
+	}	
 	return (0);
 }
 
