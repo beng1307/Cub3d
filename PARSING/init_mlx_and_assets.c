@@ -60,9 +60,6 @@ void    init_ceiling_and_floor_colors(t_data *data)
 
 void    init_mlx_and_assets(t_data *data)
 {
-    // int width;
-    // int height;
-
     init_ceiling_and_floor_colors(data);
     data->mlx.mlx_pointer = mlx_init();
     if (!data->mlx.mlx_pointer)
@@ -77,16 +74,29 @@ void    init_mlx_and_assets(t_data *data)
     if (!data->mlx.mlx_window)
         clean_exit(data, "Mlx window initialization failed!");
     
-    // data->assets.north_texture = mlx_xpm_file_to_image(data->mlx.mlx_pointer, data->assets.north_texture_file, &width, &height);
-    // if (!data->assets.north_texture || width != TEXTURE_SIZE || height != TEXTURE_SIZE)
-    //     clean_exit(data, "Mlx texture initialzation failed or wrong asset size!");
-    // data->assets.east_texture = mlx_xpm_file_to_image(data->mlx.mlx_pointer, data->assets.east_texture_file, &width, &height);
-    // if (!data->assets.east_texture || width != TEXTURE_SIZE || height != TEXTURE_SIZE)
-    //      clean_exit(data, "Mlx texture initialzation failed or wrong asset size!");
-    // data->assets.south_texture = mlx_xpm_file_to_image(data->mlx.mlx_pointer, data->assets.south_texture_file, &width, &height);
-    // if (!data->assets.south_texture || width != TEXTURE_SIZE || height != TEXTURE_SIZE)
-    //     clean_exit(data, "Mlx texture initialzation failed or wrong asset size!");
-    // data->assets.west_texture = mlx_xpm_file_to_image(data->mlx.mlx_pointer, data->assets.east_texture_file, &width, &height);
-    // if (!data->assets.west_texture || width != TEXTURE_SIZE || height != TEXTURE_SIZE)
-    //     clean_exit(data, "Mlx texture initialzation failed or wrong asset size!");
+    data->assets.no.texture = mlx_xpm_file_to_image(data->mlx.mlx_pointer, data->assets.no.texture_file, &data->assets.no.width, &data->assets.no.height);
+    if (!data->assets.no.texture)
+        clean_exit(data, "Mlx texture initialzation failed or wrong asset size!");
+    data->assets.ea.texture = mlx_xpm_file_to_image(data->mlx.mlx_pointer, data->assets.ea.texture_file, &data->assets.ea.width, &data->assets.ea.height);
+    if (!data->assets.ea.texture)
+         clean_exit(data, "Mlx texture initialzation failed or wrong asset size!");
+    data->assets.so.texture = mlx_xpm_file_to_image(data->mlx.mlx_pointer, data->assets.so.texture_file, &data->assets.so.width, &data->assets.so.height);
+    if (!data->assets.so.texture)
+        clean_exit(data, "Mlx texture initialzation failed or wrong asset size!");
+    data->assets.we.texture = mlx_xpm_file_to_image(data->mlx.mlx_pointer, data->assets.we.texture_file, &data->assets.we.width, &data->assets.we.height);
+    if (!data->assets.we.texture)
+		clean_exit(data, "Mlx texture initialzation failed or wrong asset size!");
+
+	data->assets.no.addr = mlx_get_data_addr(data->assets.no.texture, &data->assets.no.bpp, &data->assets.no.size_line, &data->assets.no.endian);
+	if (!data->assets.no.addr)
+		clean_exit(data, "Getting mlx data address failed!");
+	data->assets.ea.addr = mlx_get_data_addr(data->assets.ea.texture, &data->assets.ea.bpp, &data->assets.ea.size_line, &data->assets.ea.endian);
+	if (!data->assets.ea.addr)
+		clean_exit(data, "Getting mlx data address failed!");
+	data->assets.so.addr = mlx_get_data_addr(data->assets.so.texture, &data->assets.so.bpp, &data->assets.so.size_line, &data->assets.so.endian);
+	if (!data->assets.so.addr)
+		clean_exit(data, "Getting mlx data address failed!");
+	data->assets.we.addr = mlx_get_data_addr(data->assets.we.texture, &data->assets.we.bpp, &data->assets.we.size_line, &data->assets.we.endian);
+	if (!data->assets.we.addr)
+		clean_exit(data, "Getting mlx data address failed!");
 }

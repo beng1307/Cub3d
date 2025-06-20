@@ -68,6 +68,28 @@ void    calculate_distance_to_wall(t_data *data)
 				data->dda.distance_to_wall = (data->dda.map_x - data->player.x + (1 - data->dda.step_x) / 2) / data->dda.ray_direction_x;
 			else
 				data->dda.distance_to_wall = (data->dda.map_y - data->player.y + (1 - data->dda.step_y) / 2) / data->dda.ray_direction_y;
+	
+			//Make a own funktion out of it
+			if (data->dda.side == 0)
+			{
+				if (data->dda.ray_direction_x > 0)
+					data->dda.wall_cardinal = WEST;
+				else
+					data->dda.wall_cardinal = EAST;
+			}
+			else
+			{
+				if (data->dda.ray_direction_y > 0)
+					data->dda.wall_cardinal = NORTH;
+				else
+					data->dda.wall_cardinal = SOUTH;
+			}
+
+			if (data->dda.side == 0)
+				data->dda.part_hit = data->player.y + data->dda.distance_to_wall * data->dda.ray_direction_y;
+			else
+				data->dda.part_hit = data->player.x + data->dda.distance_to_wall * data->dda.ray_direction_x;
+			data->dda.part_hit -= floor(data->dda.part_hit);
 		}
 	}
 }

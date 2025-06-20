@@ -48,24 +48,35 @@ typedef struct	s_mlx
 
 }				t_mlx;
 
+typedef	struct	s_texture
+{
+	char		*texture_file;
+	bool		texture_found;
+	void		*texture;
+	char		*addr;
+	int			height;
+	int			width;
+	int			size_line;
+	int			bpp;
+	int			endian;
+
+}	t_texture;
+
+typedef	struct	s_wall
+{
+	int	start;
+	int	height;
+	int	end;
+}	t_wall;
+
 typedef struct	s_assets
 {
-	char		*north_texture_file;
-	bool		no_texture_found;
-	void		*north_texture;
-	
-	char		*east_texture_file;
-	bool		ea_texture_found;
-	void		*east_texture;
-	
-	char		*south_texture_file;
-	bool		so_texture_found;
-	void		*south_texture;
-	
-	char		*west_texture_file;
-	bool		we_texture_found;
-	void		*west_texture;
-	
+	t_texture	no;
+	t_texture	ea;
+	t_texture	so;
+	t_texture	we;
+
+
 	char		*floor_color_rgb;
 	bool		floor_color_found;
 	int			floor_rgb[3];
@@ -106,27 +117,39 @@ typedef struct	s_player
 		
 }				t_player;
 
+typedef enum	s_cardinals
+{
+	NORTH,
+	EAST,
+	SOUTH,
+	WEST
+}	t_cardinals;
+
 typedef struct	s_dda
 {
-	int		side;
+	int			side;
 
-	double	camera;
-	double	distance_to_wall;	
+	double		camera;
+	double		distance_to_wall;	
 
-	int		map_x;
-	int		map_y;
+	int			map_x;
+	int			map_y;
 
-	int		step_x;
-	int		step_y;
+	int			step_x;
+	int			step_y;
 
-	double	ray_direction_x;
-	double	ray_direction_y;
+	double		ray_direction_x;
+	double		ray_direction_y;
 
-	double	delta_distance_x;
-	double	delta_distance_y;
+	double		delta_distance_x;
+	double		delta_distance_y;
 
-	double	side_distance_x;
-	double	side_distance_y;
+	double		side_distance_x;
+	double		side_distance_y;
+	
+	double		part_hit;
+	t_cardinals	wall_cardinal;
+
 }				t_dda;
 
 typedef struct	s_data
@@ -141,11 +164,11 @@ typedef struct	s_data
 	t_player	player;
 	t_dda		dda;
 	t_buffer	buffer;
+	t_wall		wall;
 
 	int			gnl_error;
 }				t_data;
 
-	
 	
 //PARSING
 void	parse_and_init(t_data *data, char *file_name);
