@@ -1,7 +1,6 @@
 COMPILE = cc -g -Wall -Werror -Wextra
 
-MLX_FLAGS = -lXext -lX11 -lm
-#-lmlx
+MLX_FLAGS = -lXext -lX11 -lm -lmlx
 
 
 MLX = mlx/libmlx.a
@@ -18,7 +17,6 @@ CUB3D_SRCS = main.c \
 	PARSING/init_player_position.c \
 	PARSING/parse_and_init.c \
 	PARSING/parse_map.c \
-	PLAYER_MOVEMENT/tmp_overwrite.c \
 	PLAYER_MOVEMENT/movement_init.c \
 	PLAYER_MOVEMENT/hook_events.c \
 	PLAYER_MOVEMENT/move_player.c \
@@ -32,8 +30,8 @@ OBJDIR = obj
 
 CUB3D_OBJS = $(patsubst %.c,$(OBJDIR)/%.o,$(CUB3D_SRCS))
 
-$(CUB3d): $(CUB3D_OBJS) $(LIBFT) $(MLX)
-	$(COMPILE) $(CUB3D_OBJS) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(CUB3d)
+$(CUB3d): $(CUB3D_OBJS) $(LIBFT)	
+	$(COMPILE) $(CUB3D_OBJS) $(LIBFT) $(MLX_FLAGS) -o $(CUB3d)
 
 
 $(MLX):

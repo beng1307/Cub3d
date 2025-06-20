@@ -5,10 +5,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <sys/time.h>
 // #include <X11/keysym.h>
 #include <stdbool.h>
 #include <fcntl.h>
-#include "mlx/mlx.h"
+//#include "mlx/mlx.h"
+#include <mlx.h>
 #include <math.h>
 #include "libft/libft.h"
 
@@ -35,18 +37,14 @@
 
 # define	TEXTURE_SIZE 64
 
-//dev
-# define RED 0xFF0000
-
 //Structs
 typedef struct	s_mlx
 {
-	void	*mlx_pointer;
-	void	*mlx_window;
-	void	*mlx_image;
-	void	*image_buffer;
-
-}				t_mlx;
+	void			*mlx_pointer;
+	void			*mlx_window;
+	void			*mlx_image;
+	void			*image_buffer;
+}	t_mlx;
 
 typedef	struct	s_texture
 {
@@ -81,41 +79,53 @@ typedef struct	s_assets
 	bool		floor_color_found;
 	int			floor_rgb[3];
 	
-	char		*ceiling_color_rgb;
-	bool		ceiling_color_found;
-	int			ceiling_rgb[3];
-}				t_assets;
+	char			*ceiling_color_rgb;
+	bool			ceiling_color_found;
+	int				ceiling_rgb[3];
+}	t_assets;
 
 typedef struct s_img
 {
-	void	*mlx_img;
-	char	*addr;
-	int		bpp;
-	int		len;
-	int		endian;
+	void			*mlx_img;
+	char			*addr;
+	int				bpp;
+	int				len;
+	int				endian;
 }	t_img;
 
 typedef struct	s_buffer
 {
-	char		*buffer_address;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-}				t_buffer;
+	char			*buffer_address;
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
+}	t_buffer;
+
+typedef struct	s_move
+{
+	struct timeval	last_update;
+
+	bool			forward;
+	bool			backward;
+	bool			left;
+	bool			right;
+	bool			rotate_left;
+	bool			rotate_right;
+}	t_move;
 
 typedef struct	s_player
 {
-	double	x;
-	double	y;
+	double			x;
+	double			y;
 	
-	double	dir_x;
-	double	dir_y;
+	double			dir_x;
+	double			dir_y;
 	
-	double	plane_x;
-	double	plane_y;
+	double			plane_x;
+	double			plane_y;
 
-		
-}				t_player;
+	t_move			move;	
+}	t_player;
 
 typedef enum	s_cardinals
 {
@@ -154,9 +164,9 @@ typedef struct	s_dda
 
 typedef struct	s_data
 {
-	int			file;
-	char		**file_content;
-	char		**map;
+	int				file;
+	char			**file_content;
+	char			**map;
 
 	t_mlx		mlx;
 	t_assets	assets;
@@ -166,8 +176,8 @@ typedef struct	s_data
 	t_buffer	buffer;
 	t_wall		wall;
 
-	int			gnl_error;
-}				t_data;
+	int				gnl_error;
+}	t_data;
 
 	
 //PARSING
@@ -185,11 +195,10 @@ bool    is_map_content(char c);
 void	clean_exit(t_data *data, char *error_message);
 
 //PLAYER_MOVEMENT
-void	tmp_overwrite(t_data *data);
-void	render_map(t_data *data);
 void	movement_init(t_data *data);
 int		hook_idle(t_data *data);
-int		hook_key(int key, t_data *data);
+int		hook_key_press(int key, t_data *data);
+int		hook_key_release(int key, t_data *data);
 void	move_forward(t_data *data);
 void	move_backward(t_data *data);
 void	move_left(t_data *data);
