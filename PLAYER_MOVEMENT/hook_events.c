@@ -6,7 +6,7 @@
 /*   By: jwolfram <jwolfram@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:57:07 by jwolfram          #+#    #+#             */
-/*   Updated: 2025/06/20 16:38:33 by jwolfram         ###   ########.fr       */
+/*   Updated: 2025/06/20 16:58:02 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	should_render(t_data *data)
 	last_update = data->player.move.last_update.tv_sec * 1000
 		+ data->player.move.last_update.tv_usec / 1000;
 	if (gettimeofday(&tmp, NULL) == -1)
-		clean_exit(data, "Function gettimeofday failed\n");
+		clean_exit(data, "Function gettimeofday failed");
 	current = tmp.tv_sec * 1000 + tmp.tv_usec / 1000;
 	if (current >= last_update + 20)	
 		return (1);
@@ -48,7 +48,7 @@ int	hook_idle(t_data *data)
 	printf("x is %f\n", data->player.x);
 	raycasting(data);
 	if (gettimeofday(&data->player.move.last_update, NULL) == -1)
-		clean_exit(data, "Function gettimeofday failed\n");
+		clean_exit(data, "Function gettimeofday failed");
 	return (0);
 }
 

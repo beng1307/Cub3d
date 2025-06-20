@@ -17,7 +17,6 @@ CUB3D_SRCS = main.c \
 	PARSING/init_player_position.c \
 	PARSING/parse_and_init.c \
 	PARSING/parse_map.c \
-	PLAYER_MOVEMENT/tmp_overwrite.c \
 	PLAYER_MOVEMENT/movement_init.c \
 	PLAYER_MOVEMENT/hook_events.c \
 	PLAYER_MOVEMENT/move_player.c \

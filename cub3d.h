@@ -37,9 +37,6 @@
 
 # define	TEXTURE_SIZE 64
 
-//dev
-# define RED 0xFF0000
-
 //Structs
 typedef struct	s_mlx
 {
@@ -175,8 +172,6 @@ bool    is_map_content(char c);
 void	clean_exit(t_data *data, char *error_message);
 
 //PLAYER_MOVEMENT
-void	tmp_overwrite(t_data *data);
-void	render_map(t_data *data);
 void	movement_init(t_data *data);
 int		hook_idle(t_data *data);
 int		hook_key_press(int key, t_data *data);

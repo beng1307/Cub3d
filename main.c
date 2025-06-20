@@ -16,7 +16,8 @@ int	main(int ac, char **av)
 
 	if (ac != 2 || !av[1])
 		return (1);
-	check_filename(av[1]);
+	if (!check_filename(av[1]))
+		clean_exit(&data, "Wrong File Extension");
 	ft_memset(&data, 0, sizeof(data));
 	parse_and_init(&data, av[1]);
 //	tmp_overwrite(&data); //dev
