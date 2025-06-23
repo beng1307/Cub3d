@@ -6,7 +6,7 @@
 /*   By: jwolfram <jwolfram@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:57:07 by jwolfram          #+#    #+#             */
-/*   Updated: 2025/06/20 17:19:59 by jwolfram         ###   ########.fr       */
+/*   Updated: 2025/06/23 17:17:46 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ int	hook_idle(t_data *data)
 		rotate_left(data);
 	if (data->player.move.rotate_right)
 		rotate_right(data);
-	printf("y is %f\n", data->player.y);
-	printf("x is %f\n", data->player.x);
 	raycasting(data);
 	if (gettimeofday(&data->player.move.last_update, NULL) == -1)
 		clean_exit(data, "Function gettimeofday failed");

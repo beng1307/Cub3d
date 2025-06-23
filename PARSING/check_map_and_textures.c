@@ -126,31 +126,31 @@ void    check_textures_and_colors(t_data *data)
     {
         if (ft_strncmp(data->file_content[index], "NO ", 3) == 0)
         {
-            if (data->assets.no.texture_found)
-                clean_exit(data, "More then 1 NO Texture Paths!");
-            data->assets.no.texture_file = get_asset_path(data, index);
-            data->assets.no.texture_found = true;
-        }
-        else if (ft_strncmp(data->file_content[index], "EA ", 3) == 0)
-        {
-            if (data->assets.ea.texture_found)
-                clean_exit(data, "More then 1 EA Texture Paths!");
-            data->assets.ea.texture_file = get_asset_path(data, index);
-            data->assets.ea.texture_found = true;
-        }
-        else if (ft_strncmp(data->file_content[index], "SO ", 3) == 0)
-        {
             if (data->assets.so.texture_found)
-                clean_exit(data, "More then 1 SO Texture Paths!");
+                clean_exit(data, "More then 1 NO Texture Paths!");
             data->assets.so.texture_file = get_asset_path(data, index);
             data->assets.so.texture_found = true;
         }
-        else if (ft_strncmp(data->file_content[index], "WE ", 3) == 0)
+        else if (ft_strncmp(data->file_content[index], "EA ", 3) == 0)
         {
             if (data->assets.we.texture_found)
-                clean_exit(data, "More then 1 WE Texture Paths!");
+                clean_exit(data, "More then 1 EA Texture Paths!");
             data->assets.we.texture_file = get_asset_path(data, index);
             data->assets.we.texture_found = true;
+        }
+        else if (ft_strncmp(data->file_content[index], "SO ", 3) == 0)
+        {
+            if (data->assets.no.texture_found)
+                clean_exit(data, "More then 1 SO Texture Paths!");
+            data->assets.no.texture_file = get_asset_path(data, index);
+            data->assets.no.texture_found = true;
+        }
+        else if (ft_strncmp(data->file_content[index], "WE ", 3) == 0)
+        {
+            if (data->assets.ea.texture_found)
+                clean_exit(data, "More then 1 WE Texture Paths!");
+            data->assets.ea.texture_file = get_asset_path(data, index);
+            data->assets.ea.texture_found = true;
         }
         else if (ft_strncmp(data->file_content[index], "F ", 2) == 0)
         {

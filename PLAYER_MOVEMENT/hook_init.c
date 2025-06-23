@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   movement_init.c                                    :+:      :+:    :+:   */
+/*   hook_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwolfram <jwolfram@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:45:55 by jwolfram          #+#    #+#             */
-/*   Updated: 2025/06/23 16:57:39 by jwolfram         ###   ########.fr       */
+/*   Updated: 2025/06/23 17:19:26 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	hook_close(t_data *data)
 		return (0);
 }
 
-void	movement_init(t_data *data)
+void	hook_init(t_data *data)
 {
 	mlx_loop_hook(data->mlx.mlx_pointer, &hook_idle, data);	
 	mlx_hook(data->mlx.mlx_window, 02, (1L << 0), &hook_key_press, data);

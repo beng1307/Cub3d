@@ -25,7 +25,7 @@
 
 # define	ESCAPE 65307
 
-# define	SPEED 0.1
+# define	SPEED 0.11
 # define	COLLISION 0.2
 
 # define	MAX_MAP_HEIGHT 32
@@ -195,7 +195,7 @@ bool    is_map_content(char c);
 void	clean_exit(t_data *data, char *error_message);
 
 //PLAYER_MOVEMENT
-void	movement_init(t_data *data);
+void	hook_init(t_data *data);
 int		hook_idle(t_data *data);
 int		hook_key_press(int key, t_data *data);
 int		hook_key_release(int key, t_data *data);

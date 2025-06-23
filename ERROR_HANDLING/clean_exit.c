@@ -23,7 +23,8 @@ void	mlx_cleanup(t_data *data)
 
 void	clean_exit(t_data *data, char *error_message)
 {
-	mlx_cleanup(data);
+	if (data->mlx.mlx_pointer)
+		mlx_cleanup(data);
 	// free other allocations
 	if (error_message)
 	{
