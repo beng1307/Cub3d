@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:45:55 by jwolfram          #+#    #+#             */
-/*   Updated: 2025/06/24 19:57:53 by bgretic          ###   ########.fr       */
+/*   Updated: 2025/06/24 20:25:15 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static int	hook_close(t_data *data)
 {
-		mlx_loop_end(data->mlx.mlx_pointer);
-		clean_exit(data, NULL);
-		return (0);
+	mlx_loop_end(data->mlx.mlx_pointer);
+	clean_exit(data, NULL);
+	return (0);
 }
 
 void	hook_init(t_data *data)

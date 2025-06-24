@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 19:00:26 by bgretic           #+#    #+#             */
-/*   Updated: 2025/06/24 19:04:07 by bgretic          ###   ########.fr       */
+/*   Updated: 2025/06/24 21:06:46 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,14 @@ static void	init_mlx_stuff(t_data *data)
 	data->mlx.mlx_pointer = mlx_init();
 	if (!data->mlx.mlx_pointer)
 		clean_exit(data, "Mlx initialization failed!");
-	data->mlx.mlx_image = mlx_new_image(data->mlx.mlx_pointer, WIN_WIDTH,
-			WIN_HEIGHT);
-	if (!data->mlx.mlx_image)
-		clean_exit(data, "Mlx image initialization failed!");
-	data->mlx.image_buffer = mlx_new_image(data->mlx.mlx_pointer, WIN_WIDTH,
-			WIN_HEIGHT);
-	if (!data->mlx.image_buffer)
-		clean_exit(data, "Mlx image buffer initialization failed!");
 	data->mlx.mlx_window = mlx_new_window(data->mlx.mlx_pointer, WIN_WIDTH,
 			WIN_HEIGHT, "Cub3D");
 	if (!data->mlx.mlx_window)
 		clean_exit(data, "Mlx window initialization failed!");
+	data->mlx.mlx_image = mlx_new_image(data->mlx.mlx_pointer, WIN_WIDTH,
+			WIN_HEIGHT);
+	if (!data->mlx.mlx_image)
+		clean_exit(data, "Mlx image initialization failed!");
 }
 
 static void	init_texture_assets(t_data *data)

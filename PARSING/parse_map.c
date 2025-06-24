@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 19:00:47 by bgretic           #+#    #+#             */
-/*   Updated: 2025/06/24 19:00:48 by bgretic          ###   ########.fr       */
+/*   Updated: 2025/06/24 20:28:55 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,15 @@ static void	check_if_map_has_gaps(t_data *data, char *line)
 
 char	**parse_file_content(t_data *data, char *file_name)
 {
-	char	line[MAX_MAP_SIZE + 1];
+	char	line[(MAX_MAP_HEIGHT * MAX_MAP_WIDTH) + 1];
 	int		readed_chars;
 	int		file;
 
 	file = open(file_name, O_RDONLY);
 	if (file == -1)
 		return (perror("open"), clean_exit(data, ""), NULL);
-	ft_bzero(line, MAX_MAP_SIZE + 1);
-	readed_chars = read(file, line, MAX_MAP_SIZE);
+	ft_bzero(line, (MAX_MAP_HEIGHT * MAX_MAP_WIDTH) + 1);
+	readed_chars = read(file, line, MAX_MAP_HEIGHT * MAX_MAP_WIDTH);
 	if (readed_chars == -1)
 		return (close(file), clean_exit(data, "Read function failed!"), NULL);
 	if (read(file, line, 1) > 0)

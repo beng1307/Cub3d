@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 18:59:16 by bgretic           #+#    #+#             */
-/*   Updated: 2025/06/24 20:10:17 by bgretic          ###   ########.fr       */
+/*   Updated: 2025/06/24 21:09:22 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,11 @@
 
 # define MAX_MAP_HEIGHT 32
 # define MAX_MAP_WIDTH 32
-# define MAX_MAP_SIZE (MAX_MAP_HEIGHT * MAX_MAP_WIDTH)
 # define WIN_HEIGHT 720
 # define WIN_WIDTH 1080
 
 # define SPEED 0.11
 # define COLLISION 0.2
-
 
 # define TEXTURE_SIZE 64
 
@@ -53,7 +51,6 @@ typedef struct s_mlx
 	void			*mlx_pointer;
 	void			*mlx_window;
 	void			*mlx_image;
-	void			*image_buffer;
 }					t_mlx;
 
 typedef struct s_texture
@@ -94,15 +91,6 @@ typedef struct s_assets
 	t_color			floor;
 	t_color			ceiling;
 }					t_assets;
-
-typedef struct s_img
-{
-	void			*mlx_img;
-	char			*addr;
-	int				bpp;
-	int				len;
-	int				endian;
-}					t_img;
 
 typedef struct s_buffer
 {
@@ -179,12 +167,11 @@ typedef struct s_data
 	char			**file_content;
 	char			**map;
 
-	t_mlx			mlx;
 	t_assets		assets;
-	t_img			window_img;
-	t_player		player;
-	t_dda			dda;
 	t_buffer		buffer;
+	t_dda			dda;
+	t_mlx			mlx;
+	t_player		player;
 	t_wall			wall;
 
 	int				gnl_error;
