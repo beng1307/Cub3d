@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_player.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jwolfram <jwolfram@student.42vienna.com>   +#+  +:+       +#+        */
+/*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 16:49:38 by jwolfram          #+#    #+#             */
-/*   Updated: 2025/06/17 16:50:38 by jwolfram         ###   ########.fr       */
+/*   Updated: 2025/06/24 15:55:24 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	rotate_left(t_data *data)
 	old_planey = player->plane_y;
 	player->dir_y = player->dir_y * cos(SPEED) - player->dir_x * sin(SPEED);
 	player->dir_x = old_diry * sin(SPEED) + player->dir_x * cos(SPEED);
-	player->plane_y = player->plane_y * cos(SPEED) - player->plane_x * sin(SPEED);
+	player->plane_y = player->plane_y * cos(SPEED) - player->plane_x
+		* sin(SPEED);
 	player->plane_x = old_planey * sin(SPEED) + player->plane_x * cos(SPEED);
 }
 
@@ -38,7 +39,7 @@ void	rotate_right(t_data *data)
 	old_planey = player->plane_y;
 	player->dir_y = player->dir_y * cos(-SPEED) - player->dir_x * sin(-SPEED);
 	player->dir_x = old_diry * sin(-SPEED) + player->dir_x * cos(-SPEED);
-	player->plane_y = player->plane_y * cos(-SPEED)
-		- player->plane_x * sin(-SPEED);
+	player->plane_y = player->plane_y * cos(-SPEED) - player->plane_x
+		* sin(-SPEED);
 	player->plane_x = old_planey * sin(-SPEED) + player->plane_x * cos(-SPEED);
 }

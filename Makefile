@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/06/24 19:33:28 by bgretic           #+#    #+#              #
+#    Updated: 2025/06/24 19:33:29 by bgretic          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 COMPILE = cc -g -Wall -Werror -Wextra
 
 MLX_FLAGS = -lXext -lX11 -lm -lmlx
@@ -12,7 +24,12 @@ LIBFT_H = -I libft
 CUB3d = cub3d
 
 CUB3D_SRCS = main.c \
+	ERROR_HANDLING/clean_exit.c \
+	HELPER_FUNCTIONS/helper_functions.c \
 	PARSING/check_map_and_textures.c \
+	PARSING/check_map.c \
+	PARSING/check_textures_and_colors.c \
+	PARSING/init_ceiling_and_floor_colors.c \
 	PARSING/init_mlx_and_assets.c \
 	PARSING/init_player_position.c \
 	PARSING/parse_and_init.c \
@@ -21,10 +38,12 @@ CUB3D_SRCS = main.c \
 	PLAYER_MOVEMENT/hook_events.c \
 	PLAYER_MOVEMENT/move_player.c \
 	PLAYER_MOVEMENT/rotate_player.c \
+	RAYCASTING/calculate_distance_to_wall.c \
 	RAYCASTING/dda_algorithm.c \
 	RAYCASTING/draw_inside_buffer.c \
+	RAYCASTING/draw_wall.c \
 	RAYCASTING/raycasting.c \
-	ERROR_HANDLING/clean_exit.c
+	RAYCASTING/wall_is_hit.c
 
 OBJDIR = obj
 
@@ -42,9 +61,10 @@ $(LIBFT):
 
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
+	mkdir -p $(OBJDIR)/HELPER_FUNCTIONS
+	mkdir -p $(OBJDIR)/ERROR_HANDLING
 	mkdir -p $(OBJDIR)/PARSING
 	mkdir -p $(OBJDIR)/PLAYER_MOVEMENT
-	mkdir -p $(OBJDIR)/ERROR_HANDLING
 	mkdir -p $(OBJDIR)/RAYCASTING
 
 $(OBJDIR)/%.o: %.c | $(OBJDIR)

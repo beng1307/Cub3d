@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook_events.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jwolfram <jwolfram@student.42vienna.com>   +#+  +:+       +#+        */
+/*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:57:07 by jwolfram          #+#    #+#             */
-/*   Updated: 2025/06/20 17:19:59 by jwolfram         ###   ########.fr       */
+/*   Updated: 2025/06/24 15:55:09 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	should_render(t_data *data)
 	if (gettimeofday(&tmp, NULL) == -1)
 		clean_exit(data, "Function gettimeofday failed");
 	current = tmp.tv_sec * 1000 + tmp.tv_usec / 1000;
-	if (current >= last_update + 20)	
+	if (current >= last_update + 20)
 		return (1);
 	return (0);
 }
@@ -70,7 +70,7 @@ int	hook_key_press(int key, t_data *data)
 	{
 		mlx_loop_end(data->mlx.mlx_pointer);
 		clean_exit(data, NULL);
-	}	
+	}
 	return (0);
 }
 

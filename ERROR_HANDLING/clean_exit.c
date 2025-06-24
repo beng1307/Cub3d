@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   clean_exit.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/24 18:59:31 by bgretic           #+#    #+#             */
+/*   Updated: 2025/06/24 18:59:32 by bgretic          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3d.h"
 
-void	mlx_cleanup(t_data *data)
+static void	mlx_cleanup(t_data *data)
 {
 	if (data->assets.ea.texture)
 		mlx_destroy_image(data->mlx.mlx_pointer, data->assets.ea.texture);
@@ -24,7 +36,8 @@ void	mlx_cleanup(t_data *data)
 void	clean_exit(t_data *data, char *error_message)
 {
 	mlx_cleanup(data);
-	// free other allocations
+	if (data->file_content)
+		free_str_arr(&data->file_content);
 	if (error_message)
 	{
 		while (*error_message)

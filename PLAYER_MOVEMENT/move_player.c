@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jwolfram <jwolfram@student.42vienna.com>   +#+  +:+       +#+        */
+/*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 16:50:06 by jwolfram          #+#    #+#             */
-/*   Updated: 2025/06/17 16:50:29 by jwolfram         ###   ########.fr       */
+/*   Updated: 2025/06/24 15:55:15 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int		get_sign(double dir)
+int	get_sign(double dir)
 {
 	if (dir >= 0)
 		return (1);
