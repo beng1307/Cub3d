@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 18:59:16 by bgretic           #+#    #+#             */
-/*   Updated: 2025/06/24 19:06:36 by bgretic          ###   ########.fr       */
+/*   Updated: 2025/06/24 20:05:14 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,12 @@
 # define MAX_MAP_HEIGHT 32
 # define MAX_MAP_WIDTH 32
 # define MAX_MAP_SIZE (MAX_MAP_HEIGHT * MAX_MAP_WIDTH)
-
 # define WIN_HEIGHT 720
 # define WIN_WIDTH 1080
+
+# define SPEED 0.11
+# define COLLISION 0.2
+
 
 # define TEXTURE_SIZE 64
 
@@ -211,9 +214,9 @@ char				**parse_file_content(t_data *data, char *file_name);
 
 // PLAYER_MOVEMENT
 int					hook_idle(t_data *data);
+void				hook_init(t_data *data);
 int					hook_key_press(int key, t_data *data);
 int					hook_key_release(int key, t_data *data);
-void				movement_init(t_data *data);
 void				move_backward(t_data *data);
 void				move_forward(t_data *data);
 void				move_left(t_data *data);
@@ -230,5 +233,20 @@ void				draw_wall(t_data *data, int window_x);
 void				get_distance(t_data *data, double window_x);
 void				raycasting(t_data *data);
 void				wall_is_hit(t_data *data, bool *hit);
+// PLAYER_MOVEMENT
+int					hook_idle(t_data *data);
+int					hook_key_press(int key, t_data *data);
+int					hook_key_release(int key, t_data *data);
+void				move_forward(t_data *data);
+void				move_backward(t_data *data);
+void				move_left(t_data *data);
+void				move_right(t_data *data);
+void				rotate_left(t_data *data);
+void				rotate_right(t_data *data);
+
+// RAY_CASTING
+void				get_distance(t_data *data, double window_x);
+void				draw_inside_buffer(t_data *data, int window_x);
+void				raycasting(t_data *data);
 
 #endif
