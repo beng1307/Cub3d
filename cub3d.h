@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 18:59:16 by bgretic           #+#    #+#             */
-/*   Updated: 2025/06/24 20:05:14 by bgretic          ###   ########.fr       */
+/*   Updated: 2025/06/24 20:10:17 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,6 @@
 # define MOVE_RIGHT 'd'
 
 # define ESCAPE 65307
-
-# define SPEED 0.1
-# define COLLISION 0.2
 
 # define MAX_MAP_HEIGHT 32
 # define MAX_MAP_WIDTH 32
