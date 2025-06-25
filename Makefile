@@ -6,7 +6,7 @@
 #    By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/24 19:33:28 by bgretic           #+#    #+#              #
-#    Updated: 2025/06/24 19:33:29 by bgretic          ###   ########.fr        #
+#    Updated: 2025/06/25 14:46:04 by jwolfram         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ MLX_H = -I mlx
 LIBFT = libft/libft.a
 LIBFT_H = -I libft
 
-CUB3d = cub3d
+CUB3d = cub3D
 
 CUB3D_SRCS = main.c \
 	ERROR_HANDLING/clean_exit.c \
