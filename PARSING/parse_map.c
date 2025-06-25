@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bgretic <bgretic@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 19:00:47 by bgretic           #+#    #+#             */
-/*   Updated: 2025/06/24 20:28:55 by bgretic          ###   ########.fr       */
+/*   Updated: 2025/06/25 18:08:06 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,10 @@ char	**parse_file_content(t_data *data, char *file_name)
 	readed_chars = read(file, line, MAX_MAP_HEIGHT * MAX_MAP_WIDTH);
 	if (readed_chars == -1)
 		return (close(file), clean_exit(data, "Read function failed!"), NULL);
-	if (read(file, line, 1) > 0)
-		return (close(file), clean_exit(data, "Map is too huge!"), NULL);
+	readed_chars = read(file, line, 1);
+	if (readed_chars > 0 || readed_chars == -1)
+		return (close(file), clean_exit(data,
+				"Map is too huge or read failed!"), NULL);
 	else
 	{
 		check_if_map_has_gaps(data, line);

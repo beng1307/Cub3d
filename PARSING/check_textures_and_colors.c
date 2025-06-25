@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_textures_and_colors.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bgretic <bgretic@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 19:00:15 by bgretic           #+#    #+#             */
-/*   Updated: 2025/06/25 12:49:46 by jwolfram         ###   ########.fr       */
+/*   Updated: 2025/06/25 18:08:06 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

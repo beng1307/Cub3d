@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/06/24 19:33:28 by bgretic           #+#    #+#              #
-#    Updated: 2025/06/25 14:46:04 by jwolfram         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 COMPILE = cc -g -Wall -Werror -Wextra
 
 MLX_FLAGS = -lXext -lX11 -lm -lmlx
@@ -49,7 +37,7 @@ OBJDIR = obj
 
 CUB3D_OBJS = $(patsubst %.c,$(OBJDIR)/%.o,$(CUB3D_SRCS))
 
-$(CUB3d): $(CUB3D_OBJS) $(LIBFT)	
+$(CUB3d): $(CUB3D_OBJS) $(LIBFT)
 	$(COMPILE) $(CUB3D_OBJS) $(LIBFT) $(MLX_FLAGS) -o $(CUB3d)
 
 

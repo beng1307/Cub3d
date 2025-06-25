@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_wall.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bgretic <bgretic@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 19:01:07 by bgretic           #+#    #+#             */
-/*   Updated: 2025/06/24 19:24:48 by bgretic          ###   ########.fr       */
+/*   Updated: 2025/06/25 18:08:06 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	calculate_texel_position_and_step(t_data *data, int *texel_x,
 		double *texel_y, double *texel_step)
 {
 	*texel_x = (int)(data->dda.part_hit * data->dda.texture->width);
-	if (data->dda.wall_cardinal == SOUTH)
+	if (data->dda.wall_cardinal == SOUTH || data->dda.wall_cardinal == WEST)
 		*texel_x = data->dda.texture->width - *texel_x - 1;
 	*texel_step = (double)data->dda.texture->height / data->wall.height;
 	*texel_y = (data->wall.start - WIN_HEIGHT / 2 + data->wall.height / 2)

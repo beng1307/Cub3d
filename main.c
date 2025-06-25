@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bgretic <bgretic@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 19:01:26 by bgretic           #+#    #+#             */
+<<<<<<< Updated upstream
 /*   Updated: 2025/06/25 18:09:37 by jwolfram         ###   ########.fr       */
+=======
+/*   Updated: 2025/06/25 18:08:06 by bgretic          ###   ########.fr       */
+>>>>>>> Stashed changes
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +37,7 @@ int	main(int ac, char **av)
 
 	ft_memset(&data, 0, sizeof(data));
 	if (ac != 2 || !av[1])
-		return (1);
+		clean_exit(&data, "Wrong number of arguments!");
 	if (!check_filename(av[1]))
 		clean_exit(&data, "Wrong File Extension");
 	parse_and_init(&data, av[1]);

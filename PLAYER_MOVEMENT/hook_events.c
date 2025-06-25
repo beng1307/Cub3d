@@ -3,10 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   hook_events.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+<<<<<<< Updated upstream
 /*   By: jwolfram <jwolfram@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 18:05:10 by jwolfram          #+#    #+#             */
 /*   Updated: 2025/06/25 18:05:25 by jwolfram         ###   ########.fr       */
+=======
+/*   By: bgretic <bgretic@student.42vienna.com>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/04 17:57:07 by jwolfram          #+#    #+#             */
+/*   Updated: 2025/06/25 18:08:06 by bgretic          ###   ########.fr       */
+>>>>>>> Stashed changes
 /*                                                                            */
 /* ************************************************************************** */
 

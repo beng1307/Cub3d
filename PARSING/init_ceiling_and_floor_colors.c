@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_ceiling_and_floor_colors.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bgretic <bgretic@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 19:00:20 by bgretic           #+#    #+#             */
-/*   Updated: 2025/06/24 19:29:12 by bgretic          ###   ########.fr       */
+/*   Updated: 2025/06/25 18:08:06 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
