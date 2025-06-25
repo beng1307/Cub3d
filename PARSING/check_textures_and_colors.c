@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 19:00:15 by bgretic           #+#    #+#             */
-/*   Updated: 2025/06/24 19:28:50 by bgretic          ###   ########.fr       */
+/*   Updated: 2025/06/25 12:49:46 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,13 @@ void	check_textures_and_colors(t_data *data)
 	while (data->file_content[index] && index < 6)
 	{
 		if (ft_strncmp(data->file_content[index], "NO ", 3) == 0)
-			assign_asset_path(data, &data->assets.no, NULL, index);
-		else if (ft_strncmp(data->file_content[index], "EA ", 3) == 0)
-			assign_asset_path(data, &data->assets.ea, NULL, index);
-		else if (ft_strncmp(data->file_content[index], "SO ", 3) == 0)
 			assign_asset_path(data, &data->assets.so, NULL, index);
-		else if (ft_strncmp(data->file_content[index], "WE ", 3) == 0)
+		else if (ft_strncmp(data->file_content[index], "EA ", 3) == 0)
 			assign_asset_path(data, &data->assets.we, NULL, index);
+		else if (ft_strncmp(data->file_content[index], "SO ", 3) == 0)
+			assign_asset_path(data, &data->assets.no, NULL, index);
+		else if (ft_strncmp(data->file_content[index], "WE ", 3) == 0)
+			assign_asset_path(data, &data->assets.ea, NULL, index);
 		else if (ft_strncmp(data->file_content[index], "F ", 2) == 0)
 			assign_asset_path(data, NULL, &data->assets.floor, index);
 		else if (ft_strncmp(data->file_content[index], "C ", 2) == 0)
