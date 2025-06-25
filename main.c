@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgretic <bgretic@student.42vienna.com>     +#+  +:+       +#+        */
+/*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 19:01:26 by bgretic           #+#    #+#             */
-<<<<<<< Updated upstream
-/*   Updated: 2025/06/25 18:09:37 by jwolfram         ###   ########.fr       */
-=======
-/*   Updated: 2025/06/25 18:08:06 by bgretic          ###   ########.fr       */
->>>>>>> Stashed changes
+/*   Updated: 2025/06/25 18:39:22 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
