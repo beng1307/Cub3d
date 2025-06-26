@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 19:00:47 by bgretic           #+#    #+#             */
-/*   Updated: 2025/06/25 18:08:06 by bgretic          ###   ########.fr       */
+/*   Updated: 2025/06/26 13:20:48 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	**parse_file_content(t_data *data, char *file_name)
 
 	file = open(file_name, O_RDONLY);
 	if (file == -1)
-		return (perror("open"), clean_exit(data, ""), NULL);
+		return (perror("open"), clean_exit(data, NULL), NULL);
 	ft_bzero(line, (MAX_MAP_HEIGHT * MAX_MAP_WIDTH) + 1);
 	readed_chars = read(file, line, MAX_MAP_HEIGHT * MAX_MAP_WIDTH);
 	if (readed_chars == -1)
