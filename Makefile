@@ -1,15 +1,23 @@
-COMPILE = cc -g -Wall -Werror -Wextra
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jwolfram <jwolfram@student.42vienna.com>   +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/06/26 13:48:05 by jwolfram          #+#    #+#              #
+#    Updated: 2025/06/26 14:22:18 by jwolfram         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+COMPILE = cc -Wall -Werror -Wextra -MMD -MP
 
 MLX_FLAGS = -lXext -lX11 -lm -lmlx
-
-
-MLX = mlx/libmlx.a
-MLX_H = -I mlx
 
 LIBFT = libft/libft.a
 LIBFT_H = -I libft
 
-CUB3d = cub3D
+CUB3D = cub3D
 
 CUB3D_SRCS = main.c \
 	ERROR_HANDLING/clean_exit.c \
@@ -37,12 +45,10 @@ OBJDIR = obj
 
 CUB3D_OBJS = $(patsubst %.c,$(OBJDIR)/%.o,$(CUB3D_SRCS))
 
-$(CUB3d): $(CUB3D_OBJS) $(LIBFT)
-	$(COMPILE) $(CUB3D_OBJS) $(LIBFT) $(MLX_FLAGS) -o $(CUB3d)
+DEPS = $(patsubst %.c,$(OBJDIR)/%.d,$(CUB3D_SRCS)))
 
-
-$(MLX):
-	cd mlx && make all
+$(CUB3D): $(CUB3D_OBJS) $(LIBFT)
+	$(COMPILE) $(CUB3D_OBJS) $(LIBFT) $(MLX_FLAGS) -o $(CUB3D)
 
 $(LIBFT):
 	cd libft && make all
@@ -54,6 +60,8 @@ $(OBJDIR):
 	mkdir -p $(OBJDIR)/PARSING
 	mkdir -p $(OBJDIR)/PLAYER_MOVEMENT
 	mkdir -p $(OBJDIR)/RAYCASTING
+
+-include $(DEPS)
 
 $(OBJDIR)/%.o: %.c | $(OBJDIR)
 	$(COMPILE) $(LIBFT_H) -c $< -o $@
@@ -67,17 +75,15 @@ $(OBJDIR)/PARSING/%.o: PARSING/%.c | $(OBJDIR)
 $(OBJDIR)/ERROR_HANDLING/%.o: ERROR_HANDLING/%.c | $(OBJDIR)
 	$(COMPILE) $(LIBFT_H) -c $< -o $@
 
-all: $(CUB3d)
+all: $(CUB3D)
 
 clean:
 	@rm -rf $(OBJDIR)
 	@cd libft && make clean
-#	@cd mlx && make clean
 
 fclean: clean
-	@rm -f $(CUB3d)
+	@rm -f $(CUB3D)
 	@cd libft && make fclean
-#	@cd mlx && make clean
 
 re: fclean all
 

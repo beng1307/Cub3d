@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 19:01:26 by bgretic           #+#    #+#             */
-/*   Updated: 2025/06/26 12:48:34 by jwolfram         ###   ########.fr       */
+/*   Updated: 2025/06/26 14:12:23 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ bool	check_filename(char *filename)
 {
 	while (ft_strchr(filename, '/'))
 		filename = ft_strchr(filename, '/') + 1;
-	if (ft_strchr(filename, ' '))
-		return (false);
 	if (!ft_cmp(ft_strnstr(filename, ".cub", ft_strlen(filename)), ".cub"))
 		return (false);
 	if (ft_cmp(filename, ".cub"))
