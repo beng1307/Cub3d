@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 19:00:20 by bgretic           #+#    #+#             */
-/*   Updated: 2025/06/26 13:38:47 by jwolfram         ###   ########.fr       */
+/*   Updated: 2025/06/26 16:46:44 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,27 @@
 static void	check_rgb_string(t_data *data, char *rgb_string)
 {
 	int	index;
-	int	commas;
+	bool digit_found;
 
 	index = 0;
-	commas = 0;
+	digit_found = false;
 	while (rgb_string[index])
 	{
-		if (rgb_string[index] == ',')
-			commas++;
 		if (!(ft_isdigit(rgb_string[index]) || rgb_string[index] == ','
-				|| rgb_string[index] == ' ' || rgb_string[index] == '\t')
-			|| commas > 2)
+				|| rgb_string[index] == ' ' || rgb_string[index] == '\t'))
 			clean_exit(data, "Ceiling or Floor rgb is not correct!");
+		if (ft_isdigit(rgb_string[index]))
+			digit_found = true;
+		if (rgb_string[index] == ',')
+		{
+			if (!digit_found)
+				clean_exit(data, "Ceiling or Floor rgb is not correct!");
+			digit_found = false;
+		}
 		index++;
 	}
+	if (!digit_found)
+		clean_exit(data, "Ceiling or Floor rgb is not correct!");
 }
 
 static void	check_amount_of_rgb_args(t_data *data, char **rgb)
