@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 18:59:16 by bgretic           #+#    #+#             */
-/*   Updated: 2025/06/25 18:30:26 by bgretic          ###   ########.fr       */
+/*   Updated: 2025/06/26 14:21:26 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include "libft/libft.h"
 # include <math.h>
 # include <mlx.h>
-//#include "mlx/mlx.h"
 
 // put keynumbers
 # define ROTATE_LEFT 65361

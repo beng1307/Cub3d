@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 19:00:20 by bgretic           #+#    #+#             */
-/*   Updated: 2025/06/25 18:08:06 by bgretic          ###   ########.fr       */
+/*   Updated: 2025/06/26 13:38:47 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,17 @@
 static void	check_rgb_string(t_data *data, char *rgb_string)
 {
 	int	index;
+	int	commas;
 
 	index = 0;
+	commas = 0;
 	while (rgb_string[index])
 	{
+		if (rgb_string[index] == ',')
+			commas++;
 		if (!(ft_isdigit(rgb_string[index]) || rgb_string[index] == ','
-				|| rgb_string[index] == ' ' || rgb_string[index] == '\t'))
+				|| rgb_string[index] == ' ' || rgb_string[index] == '\t')
+			|| commas > 2)
 			clean_exit(data, "Ceiling or Floor rgb is not correct!");
 		index++;
 	}
