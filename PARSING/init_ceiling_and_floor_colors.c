@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 19:00:20 by bgretic           #+#    #+#             */
-/*   Updated: 2025/06/26 16:46:44 by bgretic          ###   ########.fr       */
+/*   Updated: 2025/06/26 16:48:31 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	check_rgb_string(t_data *data, char *rgb_string)
 {
-	int	index;
-	bool digit_found;
+	int		index;
+	bool	digit_found;
 
 	index = 0;
 	digit_found = false;
